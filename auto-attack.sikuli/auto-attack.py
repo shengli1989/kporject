@@ -13,7 +13,7 @@ def autosupply():
     sleep(1)
     reg.click("gohomebtn-3.PNG")
     sleep(1)
-    hover(retreatbtnpostion)
+    hover(notargetposition)
 
 def startmap1_5():
     try:
@@ -34,7 +34,7 @@ def startmap1_5():
 
 
 
-def edit_formation(formation = vertical):
+def edit_formation(formation = "vertical"):
     hover(notargetposition)
     if formation == "vertical":
         pass
@@ -44,7 +44,7 @@ def edit_formation(formation = vertical):
             click(Button.LEFT)
         sleep(2)
         reg.click("horzontalteam-6.PNG")
-    else
+    else:
         pass
 
 
@@ -89,7 +89,7 @@ def automap1_5_3():
     sleep(2)
 
     # 攻擊點 C or D
-    edit_formation()
+    edit_formation("horzontal")
     sleep(2)
     attack_spot(True)
     sleep(2)

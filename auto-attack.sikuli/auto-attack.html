@@ -67,7 +67,7 @@
    </head>
 <body>
 <div class="info">
-<h2>auto1-5.sikuli</h2> <a href="auto1-5.zip">(Download this script)</a>
+<h2>auto-attack.sikuli</h2> <a href="auto-attack.zip">(Download this script)</a>
 </div>
 <pre class="sikuli-code">
 reg = Region(<span class="dig">1080</span>,<span class="dig">181</span>,<span class="dig">798</span>,<span class="dig">478</span>)
@@ -81,70 +81,65 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
     reg.<span class="skw">wait</span>(<span class="str">"supply-3.PNG"</span>,<span class="dig">10</span>)
     reg.<span class="skw">click</span>(<span class="str">"supply-3.PNG"</span>)
     reg.<span class="skw">wait</span>(<span class="str">"supplypage-2.PNG"</span>,<span class="dig">5</span>)
-
     reg.<span class="skw">click</span>(<span class="str">"allsupplybtn-2.PNG"</span>)
     <span class="skw">sleep</span>(<span class="dig">1</span>)
     reg.<span class="skw">click</span>(<span class="str">"gohomebtn-3.PNG"</span>)
     <span class="skw">sleep</span>(<span class="dig">1</span>)
-    hover(retreatbtnpostion)
+    hover(notargetposition)
 
 <span class="kw">def</span> startmap1_5():
-    reg.<span class="skw">wait</span>(<span class="str">"fight-3.PNG"</span>,<span class="dig">10</span>)
+    <span class="kw">try</span>:
+        reg.<span class="skw">wait</span>(<span class="str">"fight-3.PNG"</span>,<span class="dig">10</span>)
+        reg.<span class="skw">click</span>(<span class="str">"fight-3.PNG"</span>)
+        reg.<span class="skw">wait</span>(<span class="str">"fight2-3.PNG"</span>,<span class="dig">5</span>)
+        reg.<span class="skw">click</span>(<span class="str">"fight2-3.PNG"</span>)
+        reg.<span class="skw">wait</span>(<span class="str">"map1nextbtn-1.PNG"</span>,<span class="dig">5</span>)
+        reg.<span class="skw">click</span>(<span class="str">"map1nextbtn-1.PNG"</span>)
+        reg.<span class="skw">wait</span>(<span class="str">"map1-6.PNG"</span>,<span class="dig">5</span>)
+        reg.<span class="skw">click</span>(<span class="str">"map1-6.PNG"</span>)
+        reg.<span class="skw">wait</span>(<span class="str">"checkbtn-3.PNG"</span>,<span class="dig">5</span>)
+        reg.<span class="skw">click</span>(<span class="str">"checkbtn-3.PNG"</span>)
+        reg.<span class="skw">wait</span>(<span class="str">"startfightbtn-3.PNG"</span>,<span class="dig">5</span>)
+        reg.<span class="skw">click</span>(<span class="str">"startfightbtn-3.PNG"</span>)
+    <span class="kw">except</span>:
+        <span class="kw">pass</span>
 
-    reg.<span class="skw">click</span>(<span class="str">"fight-3.PNG"</span>)
-    reg.<span class="skw">wait</span>(<span class="str">"fight2-3.PNG"</span>,<span class="dig">5</span>)
-    reg.<span class="skw">click</span>(<span class="str">"fight2-3.PNG"</span>)
-    reg.<span class="skw">wait</span>(<span class="str">"map1nextbtn-1.PNG"</span>,<span class="dig">5</span>)
-    reg.<span class="skw">click</span>(<span class="str">"map1nextbtn-1.PNG"</span>)
-    reg.<span class="skw">wait</span>(<span class="str">"map1-6.PNG"</span>,<span class="dig">5</span>)
-    reg.<span class="skw">click</span>(<span class="str">"map1-6.PNG"</span>)
-    reg.<span class="skw">wait</span>(<span class="str">"checkbtn-3.PNG"</span>,<span class="dig">5</span>)
-    reg.<span class="skw">click</span>(<span class="str">"checkbtn-3.PNG"</span>)
-    reg.<span class="skw">wait</span>(<span class="str">"startfightbtn-3.PNG"</span>,<span class="dig">5</span>)
-    reg.<span class="skw">click</span>(<span class="str">"startfightbtn-3.PNG"</span>)
 
 
-<span class="kw">def</span> checkandclickhorzontalbtn():
-    <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"horzontalteam-6.PNG"</span>):
-        hover(notargetposition)
-        <span class="skw">click</span>(Button.LEFT)
-        <span class="skw">sleep</span>(<span class="dig">2</span>)
-    reg.<span class="skw">wait</span>(<span class="str">"horzontalteam-6.PNG"</span>,<span class="dig">10</span>)
-    reg.<span class="skw">click</span>(<span class="str">"horzontalteam-6.PNG"</span>)
-
-<span class="kw">def</span> checkandclicknextspotbtn():
-    <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"nextspotbtn.PNG"</span>):
-        <span class="kw">if</span> reg.exists(<span class="str">"getoutspot.PNG"</span>):
-            reg.<span class="skw">wait</span>(<span class="str">"getoutspot.PNG"</span>,<span class="dig">10</span>)
-            reg.<span class="skw">click</span>(<span class="str">"getoutspot.PNG"</span>)
-        <span class="kw">else</span>:
-            hover(notargetposition)
+<span class="kw">def</span> edit_formation(formation = <span class="str">"vertical"</span>):
+    hover(notargetposition)
+    <span class="kw">if</span> formation == <span class="str">"vertical"</span>:
+        <span class="kw">pass</span>
+    <span class="kw">elif</span> formation == <span class="str">"horzontal"</span>:
+        <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"horzontalteam-6.PNG"</span>):
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
             <span class="skw">click</span>(Button.LEFT)
         <span class="skw">sleep</span>(<span class="dig">2</span>)
-    reg.<span class="skw">wait</span>(<span class="str">"nextspotbtn.PNG"</span>,<span class="dig">10</span>)
-    reg.<span class="skw">click</span>(<span class="str">"nextspotbtn.PNG"</span>)
+        reg.<span class="skw">click</span>(<span class="str">"horzontalteam-6.PNG"</span>)
+    <span class="kw">else</span>:
+        <span class="kw">pass</span>
 
-<span class="kw">def</span> checkandclickretreatbtn():
-    <span class="kw">while</span> <span class="kw">not</span> reg.exists(<img src="1462985138674-1.png" />):
-        <span class="kw">if</span> reg.exists(<span class="str">"getoutspot.PNG"</span>):
-            reg.<span class="skw">wait</span>(<span class="str">"getoutspot.PNG"</span>,<span class="dig">10</span>)
-            reg.<span class="skw">click</span>(<span class="str">"getoutspot.PNG"</span>)
-        <span class="kw">else</span>:
-            hover(notargetposition)
+
+<span class="kw">def</span> attack_spot(last_spot = False):
+    hover(notargetposition)
+    <span class="kw">if</span> <span class="kw">not</span> last_spot:
+        <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"nextspotbtn.PNG"</span>):
+            <span class="kw">if</span> reg.exists(<span class="str">"getoutspot.PNG"</span>):
+                <span class="skw">sleep</span>(<span class="dig">2</span>)
+                reg.<span class="skw">click</span>(<span class="str">"getoutspot.PNG"</span>)
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
             <span class="skw">click</span>(Button.LEFT)
         <span class="skw">sleep</span>(<span class="dig">2</span>)
-    reg.<span class="skw">wait</span>(<img src="1462985138674-1.png" />,<span class="dig">10</span>)
-    reg.<span class="skw">click</span>(<img src="1462985138674-1.png" />)
-
-<span class="kw">def</span> fightspot_next():
-    checkandclickhorzontalbtn()
-    <span class="skw">sleep</span>(<span class="dig">2</span>)
-    checkandclicknextspotbtn()
-
-<span class="kw">def</span> fightspot_last():
-    checkandclickhorzontalbtn()
-    <span class="skw">sleep</span>(<span class="dig">2</span>)
-    checkandclickretreatbtn()
+        reg.<span class="skw">click</span>(<span class="str">"nextspotbtn.PNG"</span>)
+    <span class="kw">else</span>:
+        <span class="kw">while</span> <span class="kw">not</span> reg.exists(<img src="1462985138674-1.png" />):
+            <span class="kw">if</span> reg.exists(<span class="str">"getoutspot.PNG"</span>):
+                <span class="skw">sleep</span>(<span class="dig">2</span>)
+                reg.<span class="skw">click</span>(<span class="str">"getoutspot.PNG"</span>)
+            <span class="skw">sleep</span>(<span class="dig">2</span>)
+            <span class="skw">click</span>(Button.LEFT)
+        <span class="skw">sleep</span>(<span class="dig">2</span>)
+        reg.<span class="skw">click</span>(<img src="1462985138674-1.png" />)
 
 
 <span class="kw">def</span> automap1_5_3():
@@ -152,18 +147,24 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
     <span class="skw">sleep</span>(<span class="dig">2</span>)
     startmap1_5()
     <span class="skw">sleep</span>(<span class="dig">5</span>)
-    fightspot_next()
-    <span class="skw">sleep</span>(<span class="dig">2</span>)
-    fightspot_next()
-    <span class="skw">sleep</span>(<span class="dig">2</span>)
-    fightspot_last()
 
-<span class="kw">def</span> automap1_5_1():
-    autosupply()
+    <span class="cmt"># 攻擊點 A</span>
+    edit_formation(<span class="str">"horzontal"</span>)
     <span class="skw">sleep</span>(<span class="dig">2</span>)
-    startmap1_5()
-    <span class="skw">sleep</span>(<span class="dig">5</span>)
-    fightspot_last()
+    attack_spot()
+    <span class="skw">sleep</span>(<span class="dig">2</span>)
+
+    <span class="cmt"># 攻擊點 B</span>
+    edit_formation(<span class="str">"horzontal"</span>)
+    <span class="skw">sleep</span>(<span class="dig">2</span>)
+    attack_spot()
+    <span class="skw">sleep</span>(<span class="dig">2</span>)
+
+    <span class="cmt"># 攻擊點 C or D</span>
+    edit_formation(<span class="str">"horzontal"</span>)
+    <span class="skw">sleep</span>(<span class="dig">2</span>)
+    attack_spot(True)
+    <span class="skw">sleep</span>(<span class="dig">2</span>)
 
 automap1_5_3()
 </pre>
