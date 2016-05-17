@@ -2,9 +2,8 @@ browser = Region(967,9,245,105)
 reg = Region(1064,175,821,495)
 cat_attack_appear_area = Region(1222,458,207,187)
 start_btn_area = Region(1502,529,372,124)
-far_battle_detail_area = Region(1637,471,239,183)
-mission_complete_message_area = Region(1510,182,367,89)
-
+far_battle_detail_area = Region(1457,431,419,230)
+mission_complete_message_area = Region(1430,180,445,91)
 
 notargetposition = Location(1162, 308)
 homepagebtn = "gohomebtn-4.PNG"
