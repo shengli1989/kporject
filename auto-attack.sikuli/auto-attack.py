@@ -1,9 +1,23 @@
+browser = Region(967,9,245,105)
 reg = Region(1080,181,798,478)
 
 notargetposition = Location(1179, 322)
 nextspotbtnposition = Location(1372,425)
 retreatbtnposition = Location(1586,428)
 horzontalbtnposition = Location(1725,524)
+
+def check_outline():
+    if exists("catattack.PNG",1):
+        raise NameError
+
+def restart_game():
+    while not reg.exists("gamestart-1.PNG", 5):
+        browser.wait("1463297354648.png",2)
+        browser.click(Pattern("1463297354648.png").targetOffset(59,0))
+        sleep(10)
+    while not reg.exists("supply-5.PNG", 3):
+        reg.click(game_start_btn)
+        sleep(5)
 
 def autosupply():
     reg.wait("supply-3.PNG",10)
@@ -42,6 +56,7 @@ def edit_formation(formation = "vertical"):
         while not reg.exists("horzontalteam-6.PNG"):
             sleep(2)
             click(Button.LEFT)
+            check_outline()
         sleep(2)
         reg.click("horzontalteam-6.PNG")
     else:
@@ -57,6 +72,7 @@ def attack_spot(last_spot = False):
                 reg.click("getoutspot.PNG")
             sleep(2)
             click(Button.LEFT)
+            check_outline()
         sleep(2)
         reg.click("nextspotbtn.PNG")
     else:
@@ -66,6 +82,7 @@ def attack_spot(last_spot = False):
                 reg.click("getoutspot.PNG")
             sleep(2)
             click(Button.LEFT)
+            check_outline()
         sleep(2)
         reg.click("1462985138674-1.png")
 
@@ -92,6 +109,23 @@ def automap1_5_3():
     edit_formation("horzontal")
     sleep(2)
     attack_spot(True)
+
+def automap1_5_1():
+    autosupply()
+    sleep(2)
+    startmap1_5()
+    sleep(5)
+
+    # 攻擊點 A
+    edit_formation("horzontal")
+    sleep(2)
+    attack_spot(True)
     sleep(2)
 
-automap1_5_3()
+attack_count = 0
+while attack_count < 5 :    
+    try:
+        automap1_5_1()
+        attack_count = attack_count + 1
+    except:
+        restart_game()

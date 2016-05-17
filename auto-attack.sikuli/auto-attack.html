@@ -70,12 +70,26 @@
 <h2>auto-attack.sikuli</h2> <a href="auto-attack.zip">(Download this script)</a>
 </div>
 <pre class="sikuli-code">
+browser = Region(<span class="dig">967</span>,<span class="dig">9</span>,<span class="dig">245</span>,<span class="dig">105</span>)
 reg = Region(<span class="dig">1080</span>,<span class="dig">181</span>,<span class="dig">798</span>,<span class="dig">478</span>)
 
 notargetposition = Location(<span class="dig">1179</span>, <span class="dig">322</span>)
 nextspotbtnposition = Location(<span class="dig">1372</span>,<span class="dig">425</span>)
 retreatbtnposition = Location(<span class="dig">1586</span>,<span class="dig">428</span>)
 horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">524</span>)
+
+<span class="kw">def</span> check_outline():
+    <span class="kw">if</span> exists(<span class="str">"catattack.PNG"</span>,<span class="dig">1</span>):
+        <span class="kw">raise</span> NameError
+
+<span class="kw">def</span> restart_game():
+    <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"gamestart-1.PNG"</span>, <span class="dig">5</span>):
+        browser.<span class="skw">wait</span>(<img src="1463297354648.png" />,<span class="dig">2</span>)
+        browser.<span class="skw">click</span>(Pattern(<img src="1463297354648.png" />).targetOffset(<span class="dig">59</span>,<span class="dig">0</span>))
+        <span class="skw">sleep</span>(<span class="dig">10</span>)
+    <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"supply-5.PNG"</span>, <span class="dig">3</span>):
+        reg.<span class="skw">click</span>(game_start_btn)
+        <span class="skw">sleep</span>(<span class="dig">5</span>)
 
 <span class="kw">def</span> autosupply():
     reg.<span class="skw">wait</span>(<span class="str">"supply-3.PNG"</span>,<span class="dig">10</span>)
@@ -114,6 +128,7 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
         <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"horzontalteam-6.PNG"</span>):
             <span class="skw">sleep</span>(<span class="dig">2</span>)
             <span class="skw">click</span>(Button.LEFT)
+            check_outline()
         <span class="skw">sleep</span>(<span class="dig">2</span>)
         reg.<span class="skw">click</span>(<span class="str">"horzontalteam-6.PNG"</span>)
     <span class="kw">else</span>:
@@ -129,6 +144,7 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
                 reg.<span class="skw">click</span>(<span class="str">"getoutspot.PNG"</span>)
             <span class="skw">sleep</span>(<span class="dig">2</span>)
             <span class="skw">click</span>(Button.LEFT)
+            check_outline()
         <span class="skw">sleep</span>(<span class="dig">2</span>)
         reg.<span class="skw">click</span>(<span class="str">"nextspotbtn.PNG"</span>)
     <span class="kw">else</span>:
@@ -138,6 +154,7 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
                 reg.<span class="skw">click</span>(<span class="str">"getoutspot.PNG"</span>)
             <span class="skw">sleep</span>(<span class="dig">2</span>)
             <span class="skw">click</span>(Button.LEFT)
+            check_outline()
         <span class="skw">sleep</span>(<span class="dig">2</span>)
         reg.<span class="skw">click</span>(<img src="1462985138674-1.png" />)
 
@@ -164,9 +181,26 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
     edit_formation(<span class="str">"horzontal"</span>)
     <span class="skw">sleep</span>(<span class="dig">2</span>)
     attack_spot(True)
+
+<span class="kw">def</span> automap1_5_1():
+    autosupply()
+    <span class="skw">sleep</span>(<span class="dig">2</span>)
+    startmap1_5()
+    <span class="skw">sleep</span>(<span class="dig">5</span>)
+
+    <span class="cmt"># 攻擊點 A</span>
+    edit_formation(<span class="str">"horzontal"</span>)
+    <span class="skw">sleep</span>(<span class="dig">2</span>)
+    attack_spot(True)
     <span class="skw">sleep</span>(<span class="dig">2</span>)
 
-automap1_5_3()
+attack_count = <span class="dig">0</span>
+<span class="kw">while</span> attack_count &lt; <span class="dig">5</span> :
+    <span class="kw">try</span>:
+        automap1_5_1()
+        attack_count = attack_count + <span class="dig">1</span>
+    <span class="kw">except</span>:
+        restart_game()
 </pre>
 </body>
 </html>
