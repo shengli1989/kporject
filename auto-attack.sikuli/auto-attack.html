@@ -73,27 +73,28 @@
 browser = Region(<span class="dig">967</span>,<span class="dig">9</span>,<span class="dig">245</span>,<span class="dig">105</span>)
 reg = Region(<span class="dig">1080</span>,<span class="dig">181</span>,<span class="dig">798</span>,<span class="dig">478</span>)
 cat_attack_appear_area = Region(<span class="dig">1222</span>,<span class="dig">458</span>,<span class="dig">207</span>,<span class="dig">187</span>)
+start_btn_area = Region(<span class="dig">1502</span>,<span class="dig">529</span>,<span class="dig">372</span>,<span class="dig">124</span>)
 notargetposition = Location(<span class="dig">1179</span>, <span class="dig">322</span>)
 nextspotbtnposition = Location(<span class="dig">1372</span>,<span class="dig">425</span>)
 retreatbtnposition = Location(<span class="dig">1586</span>,<span class="dig">428</span>)
 horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">524</span>)
-
 
 <span class="kw">def</span> check_outline():
     <span class="kw">if</span> cat_attack_appear_area.exists(<span class="str">"catattack.PNG"</span>,<span class="dig">1</span>):
         <span class="kw">raise</span> NameError
 
 <span class="kw">def</span> restart_game():
-    <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"gamestart-1.PNG"</span>, <span class="dig">5</span>):
-        browser.<span class="skw">wait</span>(<img src="1463297354648.png" />,<span class="dig">2</span>)
-        browser.<span class="skw">click</span>(Pattern(<img src="1463297354648.png" />).targetOffset(<span class="dig">59</span>,<span class="dig">0</span>))
-        <span class="skw">sleep</span>(<span class="dig">10</span>)
-    <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"supply-5.PNG"</span>, <span class="dig">3</span>):
-        reg.<span class="skw">click</span>(game_start_btn)
-        <span class="skw">sleep</span>(<span class="dig">5</span>)
+    game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</span>)
+    <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"supply-3.PNG"</span>,<span class="dig">2</span>):
+        <span class="kw">while</span> <span class="kw">not</span> start_btn_area.exists(<span class="str">"gamestart-1.PNG"</span>, <span class="dig">5</span>):
+            browser.<span class="skw">wait</span>(<img src="1463297354648.png" />,<span class="dig">2</span>)
+            browser.<span class="skw">click</span>(Pattern(<img src="1463297354648.png" />).targetOffset(<span class="dig">59</span>,<span class="dig">0</span>))
+            <span class="skw">sleep</span>(<span class="dig">10</span>)
+        <span class="skw">click</span>(game_start_btn)
+        reg.exists(<span class="str">"supply-3.PNG"</span>,<span class="dig">15</span>)
 
 <span class="kw">def</span> autosupply():
-    reg.<span class="skw">wait</span>(<span class="str">"supply-3.PNG"</span>,<span class="dig">10</span>)
+    reg.<span class="skw">wait</span>(<span class="str">"supply-3.PNG"</span>,<span class="dig">5</span>)
     reg.<span class="skw">click</span>(<span class="str">"supply-3.PNG"</span>)
     reg.<span class="skw">wait</span>(<span class="str">"supplypage-2.PNG"</span>,<span class="dig">5</span>)
     reg.<span class="skw">click</span>(<span class="str">"allsupplybtn-2.PNG"</span>)

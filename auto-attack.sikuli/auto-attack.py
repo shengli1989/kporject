@@ -1,27 +1,28 @@
 browser = Region(967,9,245,105)
 reg = Region(1080,181,798,478)
 cat_attack_appear_area = Region(1222,458,207,187)
+start_btn_area = Region(1502,529,372,124)
 notargetposition = Location(1179, 322)
 nextspotbtnposition = Location(1372,425)
 retreatbtnposition = Location(1586,428)
 horzontalbtnposition = Location(1725,524)
-
 
 def check_outline():
     if cat_attack_appear_area.exists("catattack.PNG",1):
         raise NameError
 
 def restart_game():
-    while not reg.exists("gamestart-1.PNG", 5):
-        browser.wait("1463297354648.png",2)
-        browser.click(Pattern("1463297354648.png").targetOffset(59,0))
-        sleep(10)
-    while not reg.exists("supply-5.PNG", 3):
-        reg.click(game_start_btn)
-        sleep(5)
-
+    game_start_btn = Location(1672, 582) 
+    while not reg.exists("supply-3.PNG",2):
+        while not start_btn_area.exists("gamestart-1.PNG", 5):
+            browser.wait("1463297354648.png",2)
+            browser.click(Pattern("1463297354648.png").targetOffset(59,0))
+            sleep(10)
+        click(game_start_btn)
+        reg.exists("supply-3.PNG",15)
+        
 def autosupply():
-    reg.wait("supply-3.PNG",10)
+    reg.wait("supply-3.PNG",5)
     reg.click("supply-3.PNG")
     reg.wait("supplypage-2.PNG",5)
     reg.click("allsupplybtn-2.PNG")
