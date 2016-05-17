@@ -72,14 +72,15 @@
 <pre class="sikuli-code">
 browser = Region(<span class="dig">967</span>,<span class="dig">9</span>,<span class="dig">245</span>,<span class="dig">105</span>)
 reg = Region(<span class="dig">1080</span>,<span class="dig">181</span>,<span class="dig">798</span>,<span class="dig">478</span>)
-
+cat_attack_appear_area = Region(<span class="dig">1222</span>,<span class="dig">458</span>,<span class="dig">207</span>,<span class="dig">187</span>)
 notargetposition = Location(<span class="dig">1179</span>, <span class="dig">322</span>)
 nextspotbtnposition = Location(<span class="dig">1372</span>,<span class="dig">425</span>)
 retreatbtnposition = Location(<span class="dig">1586</span>,<span class="dig">428</span>)
 horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">524</span>)
 
+
 <span class="kw">def</span> check_outline():
-    <span class="kw">if</span> exists(<span class="str">"catattack.PNG"</span>,<span class="dig">1</span>):
+    <span class="kw">if</span> cat_attack_appear_area.exists(<span class="str">"catattack.PNG"</span>,<span class="dig">1</span>):
         <span class="kw">raise</span> NameError
 
 <span class="kw">def</span> restart_game():

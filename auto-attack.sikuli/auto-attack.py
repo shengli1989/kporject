@@ -1,13 +1,14 @@
 browser = Region(967,9,245,105)
 reg = Region(1080,181,798,478)
-
+cat_attack_appear_area = Region(1222,458,207,187)
 notargetposition = Location(1179, 322)
 nextspotbtnposition = Location(1372,425)
 retreatbtnposition = Location(1586,428)
 horzontalbtnposition = Location(1725,524)
 
+
 def check_outline():
-    if exists("catattack.PNG",1):
+    if cat_attack_appear_area.exists("catattack.PNG",1):
         raise NameError
 
 def restart_game():
