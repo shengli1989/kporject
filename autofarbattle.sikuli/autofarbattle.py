@@ -1,9 +1,18 @@
 browser = Region(967,9,245,105)
 reg = Region(1064,175,821,495)
+cat_attack_appear_area = Region(1222,458,207,187)
+start_btn_area = Region(1502,529,372,124)
+far_battle_detail_area = Region(1637,471,239,183)
+mission_complete_message_area = Region(1510,182,367,89)
+
 
 notargetposition = Location(1162, 308)
 homepagebtn = "gohomebtn-4.PNG"
 game_start_btn = Location(1672, 582)
+
+def check_outline():
+    if cat_attack_appear_area.exists("catattack-6.PNG",1):
+        raise NameError
 
 def checkcurrentpage():
     if reg.exists("supply-6.PNG", 1):
@@ -18,22 +27,24 @@ def checkcurrentpage():
     return currentpage
    
 def restart_game():
-    while not reg.exists("gamestart-1.PNG", 5):
-        browser.wait("1463297354648.png",2)
-        browser.click(Pattern("1463297354648.png").targetOffset(59,0))
-        sleep(10)
-    while not reg.exists("supply-5.PNG", 3):
-        reg.click(game_start_btn)
-        sleep(5)
+    game_start_btn = Location(1672, 582) 
+    while not reg.exists("supply-9.PNG",2):
+        while not start_btn_area.exists("gamestart-3.PNG", 5):
+            browser.wait("1463297354648-1.png",2)
+            browser.click(Pattern("1463297354648-1.png").targetOffset(59,0))
+            sleep(10)
+        click(game_start_btn)
+        reg.exists("supply-10.PNG",15)
 
 def check_mission_complete_message():
     hover(notargetposition) 
-    if exists("1463317363839.png", 2):
+    if mission_complete_message_area.exists("1463317363839.png", 2):
         x = 0
         while x < 5:        
             x = x + 1  
             doubleClick(notargetposition)
-            sleep(3)           
+            sleep(3)
+            check_outline()
     else:
         sleep(2)
 def gohomepage(): 
@@ -42,8 +53,8 @@ def gohomepage():
         sleep(2)
         check_mission_complete_message()        
     elif currentpage == "supplypage" or currentpage == "farbettlepage":
-        wait(homepagebtn,3)
-        click(homepagebtn)
+        reg.wait(homepagebtn,3)
+        reg.click(homepagebtn)
         sleep(2)
         check_mission_complete_message()        
 
@@ -62,44 +73,26 @@ def autosupply(team = 1):
     reg.wait("supplypage-5.PNG",5) 
     if team == 1:
         reg.click("allsupplybtn-3.PNG")
-    elif team == 2:
-        reg.wait("team2btn-1.PNG",2)
-        sleep(1)
-        reg.click("team2btn-1.PNG") 
-        sleep(1)
-        reg.wait("allsupplybtn-3.PNG",2)
-        sleep(1)
-        reg.click()        
+    elif team == 2:  
+        reg.click(Pattern("allsupplybtn-3.PNG").targetOffset(60,-1))
+        sleep(2)
+        reg.click("allsupplybtn-3.PNG")
     elif team == 3:
-        reg.wait("team3btn-1.PNG",2)
-        sleep(1)
-        reg.click("team3btn-1.PNG")
-        sleep(1)
-        reg.wait("allsupplybtn-3.PNG",2)
-        sleep(1)
-        reg.click("allsupplybtn-3.PNG")                    
+        reg.click(Pattern("allsupplybtn-3.PNG").targetOffset(88,0))
+        sleep(2)        
+        reg.click("allsupplybtn-3.PNG")
     elif team == 5:       
-        reg.wait("allsupplybtn-3.PNG",2)
-        sleep(1)
         reg.click("allsupplybtn-3.PNG")    
         sleep(2)
-        reg.wait("team2btn-1.PNG",2)
-        sleep(1)
-        reg.click("team2btn-1.PNG") 
+        reg.click(Pattern("allsupplybtn-3.PNG").targetOffset(60,-1))
         sleep(2)
-        reg.wait("allsupplybtn-3.PNG",2)
-        sleep(1)
-        reg.click("allsupplybtn-3.PNG")    
+        reg.click("allsupplybtn-3.PNG")
         sleep(2) 
-        reg.wait("team3btn-1.PNG",2)
-        sleep(1)
-        reg.click("team3btn-1.PNG")    
-        sleep(2)
-        reg.wait("allsupplybtn-3.PNG",2)
-        sleep(1)
-        reg.click("allsupplybtn-3.PNG")    
+        reg.click(Pattern("allsupplybtn-3.PNG").targetOffset(88,0))
+        sleep(2)        
+        reg.click("allsupplybtn-3.PNG")  
     sleep(2)
-    reg.click("gohomebtn-4.PNG")
+    reg.click(homepagebtn)
     sleep(2)
     hover(notargetposition)
 
@@ -117,9 +110,9 @@ def checkmissionstate(target):
         sleep(1)
         reg.click("mission21.PNG")   
         sleep(1)
-    if reg.exists("farbattlestopbtn-1.PNG",2):
+    if far_battle_detail_area.exists("farbattlestopbtn-1.PNG",2):
         missionstate = "active"
-    elif reg.exists("farbettlecheckbtn-1.PNG",2):
+    elif far_battle_detail_area.exists("farbettlecheckbtn-1.PNG",2):
         missionstate = "stop"  
     return missionstate
 
@@ -139,40 +132,42 @@ def start_mission(team):
         sleep(1)
         reg.click("mission21.PNG")
         sleep(1)   
-    reg.wait("farbettlecheckbtn-1.PNG",3)
+    far_battle_detail_area.wait("farbettlecheckbtn-1.PNG",3)
     sleep(1) 
-    reg.click("farbettlecheckbtn-1.PNG")
+    far_battle_detail_area.click("farbettlecheckbtn-1.PNG")
     sleep(1)
     if team == 3:
         reg.wait("far_battle_team_btn_3.PNG",3)
         sleep(1)
         reg.click("far_battle_team_btn_3.PNG")             
-    reg.wait("farbettlestartbtn-1.PNG",3)
+    far_battle_detail_area.wait("farbettlestartbtn-1.PNG",3)
     sleep(1)
-    reg.click("farbettlestartbtn-1.PNG")
+    far_battle_detail_area.click("farbettlestartbtn-1.PNG")
     sleep(1)
 
-while True:
-    try:
-        gohomepage()             
-        team_target = 2
-        while team_target < 4:        
-            go_far_battle_page()
-            team_mission_state = checkmissionstate(team_target)
-            if team_mission_state == "stop":
-                sleep(3)            
-                gohomepage()
-                autosupply(team_target)
-                go_far_battle_page()         
-                sleep(2)
-                start_mission(team_target)         
+def auto_far_battle():
+    while True:
+        try:
+            gohomepage()             
+            team_target = 2
+            while team_target < 4:        
+                go_far_battle_page()
+                team_mission_state = checkmissionstate(team_target)
+                if team_mission_state == "stop":
+                    sleep(3)            
+                    gohomepage()
+                    autosupply(team_target)
+                    go_far_battle_page()         
+                    sleep(2)
+                    start_mission(team_target)         
+                    sleep(5)
+                    gohomepage()               
+                else:
+                    sleep(3)
+                    gohomepage()
+                team_target = team_target + 1
                 sleep(5)
-                gohomepage()               
-            else:
-                sleep(3)
-                gohomepage()
-            team_target = team_target + 1
-            sleep(5)
-        sleep(1200)
-    except:
-        restart_game()
+            sleep(1200)
+        except:
+            restart_game()
+auto_far_battle()
