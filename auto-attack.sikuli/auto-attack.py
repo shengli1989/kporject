@@ -88,7 +88,7 @@ def attack_spot(last_spot = False):
         reg.click("1462985138674-1.png")
 
 
-def automap1_5_3():
+def automap1_5_2():
     autosupply()
     sleep(2)
     startmap1_5()
@@ -101,12 +101,6 @@ def automap1_5_3():
     sleep(2)
 
     # 攻擊點 B
-    edit_formation("horzontal")
-    sleep(2)
-    attack_spot()
-    sleep(2)
-
-    # 攻擊點 C or D
     edit_formation("horzontal")
     sleep(2)
     attack_spot(True)
@@ -124,7 +118,7 @@ def automap1_5_1():
     sleep(2)
 
 attack_count = 0
-while attack_count < 5 :    
+while attack_count < 10 :    
     try:
         automap1_5_1()
         attack_count = attack_count + 1

@@ -160,7 +160,7 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
         reg.<span class="skw">click</span>(<img src="1462985138674-1.png" />)
 
 
-<span class="kw">def</span> automap1_5_3():
+<span class="kw">def</span> automap1_5_2():
     autosupply()
     <span class="skw">sleep</span>(<span class="dig">2</span>)
     startmap1_5()
@@ -173,12 +173,6 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
     <span class="skw">sleep</span>(<span class="dig">2</span>)
 
     <span class="cmt"># 攻擊點 B</span>
-    edit_formation(<span class="str">"horzontal"</span>)
-    <span class="skw">sleep</span>(<span class="dig">2</span>)
-    attack_spot()
-    <span class="skw">sleep</span>(<span class="dig">2</span>)
-
-    <span class="cmt"># 攻擊點 C or D</span>
     edit_formation(<span class="str">"horzontal"</span>)
     <span class="skw">sleep</span>(<span class="dig">2</span>)
     attack_spot(True)
@@ -196,7 +190,7 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
     <span class="skw">sleep</span>(<span class="dig">2</span>)
 
 attack_count = <span class="dig">0</span>
-<span class="kw">while</span> attack_count &lt; <span class="dig">5</span> :
+<span class="kw">while</span> attack_count &lt; <span class="dig">10</span> :
     <span class="kw">try</span>:
         automap1_5_1()
         attack_count = attack_count + <span class="dig">1</span>
