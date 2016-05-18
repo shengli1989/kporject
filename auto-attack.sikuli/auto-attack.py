@@ -119,7 +119,7 @@ def automap1_5_1():
     sleep(2)
 
 attack_count = 0
-while attack_count < 10 :    
+while attack_count < 5 :    
     try:
         automap1_5_1()
         attack_count = attack_count + 1

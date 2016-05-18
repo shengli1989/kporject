@@ -166,7 +166,7 @@ def auto_far_battle():
                     gohomepage()
                 team_target = team_target + 1
                 sleep(5)
-            sleep(1200)
+            sleep(1800)
         except:
             restart_game()
 auto_far_battle()
