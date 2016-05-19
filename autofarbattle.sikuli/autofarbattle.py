@@ -8,7 +8,6 @@ far_battle_detail_area = Region(1457,431,419,230)
 mission_complete_message_area = Region(1430,180,445,91)
 
 notargetposition = Location(1162, 308)
-homepagebtn = "gohomebtn-4.PNG"
 game_start_btn = Location(1672, 582)
 
 def check_outline():
@@ -40,9 +39,10 @@ def check_mission_complete_message():
     hover(notargetposition)
     if mission_complete_message_area.exists("1463317363839.png", 2):
         x = 0
+        click_position = Location(random.randint(1162,1162+400), random.randint(308,308+200))
         while x < 5:
             x = x + 1
-            click(notargetposition)
+            click(click_position)
             sleep(random.randint(2,8))
             check_outline()
     else:
@@ -53,19 +53,21 @@ def gohomepage():
         sleep(random.randint(2,10))
         check_mission_complete_message()
     elif currentpage == "supplypage" or currentpage == "farbettlepage":
-        reg.wait(homepagebtn,3)
-        reg.click(homepagebtn)
+        reg.wait("gohomebtn-4.PNG",3)
+        reg.click("gohomebtn-4.PNG")
         sleep(random.randint(2,10))
         check_mission_complete_message()
 
-
 def go_far_battle_page():
-    hover(notargetposition)
+    hover(Location(random.randint(1634,1725), random.randint(416,496)))
+    fight_btn = "fight-4.PNG"
+    far_battle_btn = "farbettlebtn-1.PNG"
     reg.wait("fight-4.PNG",10)
-    reg.click("fight-4.PNG")
+    
+    reg.click(Pattern(fight_btn).targetOffset(random.randint(-50,50),random.randint(-40,40)))
     sleep(random.randint(2,5))
-    reg.wait("farbettlebtn-1.PNG",10)
-    reg.click("farbettlebtn-1.PNG")
+    reg.wait("farbettlebtn-1.PNG",10)   
+    reg.click(Pattern(far_battle_btn).targetOffset(random.randint(-50,50),random.randint(-50,50)))
 
 def autosupply(team = 1):
     reg.click("supply-5.PNG")
@@ -91,7 +93,7 @@ def autosupply(team = 1):
         sleep(random.randint(2,5))
         reg.click("allsupplybtn-3.PNG")
     sleep(random.randint(2,5))
-    reg.click(homepagebtn)
+    reg.click("gohomebtn-4.PNG")
     sleep(random.randint(2,5))
     hover(notargetposition)
 
@@ -169,4 +171,4 @@ def auto_far_battle():
             sleep(1800)
         except:
             restart_game()
-auto_far_battle()
+#auto_far_battle()
