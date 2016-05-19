@@ -76,175 +76,167 @@ browser = Region(<span class="dig">967</span>,<span class="dig">9</span>,<span c
 reg = Region(<span class="dig">1064</span>,<span class="dig">175</span>,<span class="dig">821</span>,<span class="dig">495</span>)
 cat_attack_appear_area = Region(<span class="dig">1222</span>,<span class="dig">458</span>,<span class="dig">207</span>,<span class="dig">187</span>)
 start_btn_area = Region(<span class="dig">1502</span>,<span class="dig">529</span>,<span class="dig">372</span>,<span class="dig">124</span>)
-far_battle_detail_area = Region(<span class="dig">1457</span>,<span class="dig">431</span>,<span class="dig">419</span>,<span class="dig">230</span>)
 mission_complete_message_area = Region(<span class="dig">1430</span>,<span class="dig">180</span>,<span class="dig">445</span>,<span class="dig">91</span>)
+supply_area = Region(<span class="dig">1163</span>,<span class="dig">274</span>,<span class="dig">270</span>,<span class="dig">378</span>)
 
 notargetposition = Location(<span class="dig">1162</span>, <span class="dig">308</span>)
 game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</span>)
 
+<span class="kw">def</span> click_random_position(area, image, x1, x2, y1, y2):
+    area.<span class="skw">click</span>(Pattern(image).targetOffset(random.randint(x1,x2),random.randint(y1,y2)))
+
 <span class="kw">def</span> check_outline():
-    <span class="kw">if</span> cat_attack_appear_area.exists(<span class="str">"catattack-6.PNG"</span>,<span class="dig">1</span>):
+    <span class="kw">if</span> cat_attack_appear_area.exists(<span class="str">"catattack.PNG"</span>,<span class="dig">1</span>):
         <span class="kw">raise</span> NameError
 
-<span class="kw">def</span> checkcurrentpage():
-    <span class="kw">if</span> reg.exists(<span class="str">"supply-6.PNG"</span>, <span class="dig">1</span>):
+<span class="kw">def</span> check_current_page():
+    <span class="kw">if</span> reg.exists(<span class="str">"supply.PNG"</span>, <span class="dig">1</span>):
         currentpage = <span class="str">"homepage"</span>
-    <span class="kw">elif</span> reg.exists(<span class="str">"supplypage-4.PNG"</span>, <span class="dig">1</span>):
+    <span class="kw">elif</span> reg.exists(<span class="str">"check_supply_page.PNG"</span>, <span class="dig">1</span>):
         currentpage = <span class="str">"supplypage"</span>
     <span class="kw">elif</span> reg.exists(<img src="1463311409151.png" />, <span class="dig">1</span>):
-        currentpage = <span class="str">"farbettlepage"</span>
+        currentpage = <span class="str">"far_battle_page"</span>
     <span class="kw">else</span>:
         currentpage = <span class="str">"not find"</span>
     <span class="kw">return</span> currentpage
 
 <span class="kw">def</span> restart_game():
-    game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</span>)
-    <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"supply-9.PNG"</span>,<span class="dig">2</span>):
+    <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"supply.PNG"</span>,<span class="dig">2</span>):
         <span class="kw">while</span> <span class="kw">not</span> start_btn_area.exists(<span class="str">"gamestart-3.PNG"</span>, <span class="dig">5</span>):
             browser.<span class="skw">wait</span>(<img src="1463297354648-1.png" />,<span class="dig">2</span>)
             browser.<span class="skw">click</span>(Pattern(<img src="1463297354648-1.png" />).targetOffset(<span class="dig">59</span>,<span class="dig">0</span>))
             <span class="skw">sleep</span>(random.randint(<span class="dig">10</span>,<span class="dig">25</span>))
-        <span class="skw">click</span>(game_start_btn)
-        reg.exists(<span class="str">"supply-10.PNG"</span>,<span class="dig">15</span>)
+        click_random_position(reg, <span class="str">"gamestart-3.PNG"</span>, -<span class="dig">100</span>, <span class="dig">100</span>, -<span class="dig">25</span> ,<span class="dig">25</span>)
+        reg.exists(<span class="str">"supply.PNG"</span>,<span class="dig">15</span>)
 
 <span class="kw">def</span> check_mission_complete_message():
-    hover(notargetposition)
+    hover(Location(random.randint(<span class="dig">1634</span>,<span class="dig">1725</span>), random.randint(<span class="dig">416</span>,<span class="dig">496</span>)))
     <span class="kw">if</span> mission_complete_message_area.exists(<img src="1463317363839.png" />, <span class="dig">2</span>):
         x = <span class="dig">0</span>
         click_position = Location(random.randint(<span class="dig">1162</span>,<span class="dig">1162</span>+<span class="dig">400</span>), random.randint(<span class="dig">308</span>,<span class="dig">308</span>+<span class="dig">200</span>))
         <span class="kw">while</span> x &lt; <span class="dig">5</span>:
             x = x + <span class="dig">1</span>
             <span class="skw">click</span>(click_position)
-            <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">8</span>))
+            <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
             check_outline()
-    <span class="kw">else</span>:
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">10</span>))
-<span class="kw">def</span> gohomepage():
-    currentpage = checkcurrentpage()
+
+<span class="kw">def</span> go_home_page():
+    hover(Location(random.randint(<span class="dig">1634</span>,<span class="dig">1725</span>), random.randint(<span class="dig">416</span>,<span class="dig">496</span>)))
+    currentpage = check_current_page()
     <span class="kw">if</span> currentpage == <span class="str">"homepage"</span>:
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">10</span>))
-        check_mission_complete_message()
-    <span class="kw">elif</span> currentpage == <span class="str">"supplypage"</span> <span class="kw">or</span> currentpage == <span class="str">"farbettlepage"</span>:
-        reg.<span class="skw">wait</span>(<span class="str">"gohomebtn-4.PNG"</span>,<span class="dig">3</span>)
-        reg.<span class="skw">click</span>(<span class="str">"gohomebtn-4.PNG"</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">10</span>))
-        check_mission_complete_message()
+        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+    <span class="kw">elif</span> currentpage == <span class="str">"supplypage"</span> <span class="kw">or</span> currentpage == <span class="str">"far_battle_page"</span>:
+        reg.<span class="skw">wait</span>(<span class="str">"gohomebtn.PNG"</span>,<span class="dig">3</span>)
+        click_random_position(reg, <span class="str">"gohomebtn.PNG"</span>, -<span class="dig">10</span>, <span class="dig">10</span>, -<span class="dig">35</span> ,<span class="dig">35</span>)
+        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+
+<span class="kw">def</span> go_supply_page():
+    hover(Location(random.randint(<span class="dig">1634</span>,<span class="dig">1725</span>), random.randint(<span class="dig">416</span>,<span class="dig">496</span>)))
+    currentpage = check_current_page()
+    <span class="kw">print</span> currentpage
+    <span class="kw">if</span> currentpage == <span class="str">"homepage"</span>:
+        reg.<span class="skw">wait</span>(<span class="str">"supply.PNG"</span>,<span class="dig">3</span>)
+        click_random_position(reg, <span class="str">"supply.PNG"</span>, -<span class="dig">25</span>, <span class="dig">25</span>, -<span class="dig">25</span> ,<span class="dig">25</span>)
+    <span class="kw">elif</span> currentpage == <span class="str">"far_battle_page"</span>:
+        reg.<span class="skw">wait</span>(<span class="str">"toolbox_supply_btn.PNG"</span>,<span class="dig">3</span>)
+        click_random_position(reg, <span class="str">"toolbox_supply_btn.PNG"</span>, -<span class="dig">16</span>, <span class="dig">16</span>, -<span class="dig">20</span> ,<span class="dig">20</span>)
+    <span class="kw">else</span>:
+        <span class="kw">pass</span>
 
 <span class="kw">def</span> go_far_battle_page():
     hover(Location(random.randint(<span class="dig">1634</span>,<span class="dig">1725</span>), random.randint(<span class="dig">416</span>,<span class="dig">496</span>)))
-    fight_btn = <span class="str">"fight-4.PNG"</span>
-    far_battle_btn = <span class="str">"farbettlebtn-1.PNG"</span>
     reg.<span class="skw">wait</span>(<span class="str">"fight-4.PNG"</span>,<span class="dig">10</span>)
-
-    reg.<span class="skw">click</span>(Pattern(fight_btn).targetOffset(random.randint(-<span class="dig">50</span>,<span class="dig">50</span>),random.randint(-<span class="dig">40</span>,<span class="dig">40</span>)))
+    click_random_position(supply_area, <span class="str">"fight-4.PNG"</span>, -<span class="dig">50</span>, <span class="dig">50</span>, -<span class="dig">40</span>, <span class="dig">40</span>)
     <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
     reg.<span class="skw">wait</span>(<span class="str">"farbettlebtn-1.PNG"</span>,<span class="dig">10</span>)
-    reg.<span class="skw">click</span>(Pattern(far_battle_btn).targetOffset(random.randint(-<span class="dig">50</span>,<span class="dig">50</span>),random.randint(-<span class="dig">50</span>,<span class="dig">50</span>)))
+    click_random_position(reg, <span class="str">"farbettlebtn-1.PNG"</span>, -<span class="dig">50</span>, <span class="dig">50</span>, -<span class="dig">40</span>, <span class="dig">40</span>)
 
-<span class="kw">def</span> autosupply(team = <span class="dig">1</span>):
-    reg.<span class="skw">click</span>(<span class="str">"supply-5.PNG"</span>)
-    reg.<span class="skw">wait</span>(<span class="str">"supplypage-5.PNG"</span>,<span class="dig">5</span>)
-    <span class="kw">if</span> team == <span class="dig">1</span>:
-        reg.<span class="skw">click</span>(<span class="str">"allsupplybtn-3.PNG"</span>)
-    <span class="kw">elif</span> team == <span class="dig">2</span>:
-        reg.<span class="skw">click</span>(Pattern(<span class="str">"allsupplybtn-3.PNG"</span>).targetOffset(<span class="dig">60</span>,-<span class="dig">1</span>))
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">click</span>(<span class="str">"allsupplybtn-3.PNG"</span>)
-    <span class="kw">elif</span> team == <span class="dig">3</span>:
-        reg.<span class="skw">click</span>(Pattern(<span class="str">"allsupplybtn-3.PNG"</span>).targetOffset(<span class="dig">88</span>,<span class="dig">0</span>))
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">click</span>(<span class="str">"allsupplybtn-3.PNG"</span>)
-    <span class="kw">elif</span> team == <span class="dig">5</span>:
-        reg.<span class="skw">click</span>(<span class="str">"allsupplybtn-3.PNG"</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">click</span>(Pattern(<span class="str">"allsupplybtn-3.PNG"</span>).targetOffset(<span class="dig">60</span>,-<span class="dig">1</span>))
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">click</span>(<span class="str">"allsupplybtn-3.PNG"</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">click</span>(Pattern(<span class="str">"allsupplybtn-3.PNG"</span>).targetOffset(<span class="dig">88</span>,<span class="dig">0</span>))
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">click</span>(<span class="str">"allsupplybtn-3.PNG"</span>)
-    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-    reg.<span class="skw">click</span>(<span class="str">"gohomebtn-4.PNG"</span>)
-    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-    hover(notargetposition)
+<span class="kw">def</span> check_mission_state_and_supply(team_num):
+    <span class="kw">if</span> team_num == <span class="dig">2</span>:
+        click_random_position(supply_area, <span class="str">"edit_page_team2_btn.PNG"</span>, -<span class="dig">8</span>, <span class="dig">8</span>, -<span class="dig">8</span>, <span class="dig">8</span>)
+        <span class="skw">sleep</span>(random.randint(<span class="dig">1</span>,<span class="dig">3</span>))
+    <span class="kw">elif</span> team_num == <span class="dig">3</span>:
+        click_random_position(supply_area, <img src="1463680035395.png" />, -<span class="dig">8</span>, <span class="dig">8</span>, -<span class="dig">8</span>, <span class="dig">8</span>)
+        <span class="skw">sleep</span>(random.randint(<span class="dig">1</span>,<span class="dig">3</span>))
+    <span class="kw">elif</span> team_num == <span class="dig">4</span>:
+        <span class="kw">pass</span>
 
-<span class="kw">def</span> checkmissionstate(target):
-    <span class="kw">if</span> target == <span class="dig">2</span>:
-        reg.<span class="skw">wait</span>(<span class="str">"farbettlemession5-1.PNG"</span>,<span class="dig">3</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">click</span>(<span class="str">"farbettlemession5-1.PNG"</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-    <span class="kw">elif</span> target == <span class="dig">3</span>:
-        reg.<span class="skw">wait</span>(<span class="str">"map3btn.PNG"</span>,<span class="dig">3</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">click</span>(<span class="str">"map3btn.PNG"</span>)
-        reg.<span class="skw">wait</span>(<span class="str">"mission21.PNG"</span>,<span class="dig">3</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">click</span>(<span class="str">"mission21.PNG"</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-    <span class="kw">if</span> far_battle_detail_area.exists(<span class="str">"farbattlestopbtn-1.PNG"</span>,<span class="dig">2</span>):
-        missionstate = <span class="str">"active"</span>
-    <span class="kw">elif</span> far_battle_detail_area.exists(<span class="str">"farbettlecheckbtn-1.PNG"</span>,<span class="dig">2</span>):
-        missionstate = <span class="str">"stop"</span>
-    <span class="kw">return</span> missionstate
+    <span class="kw">if</span> supply_area.exists(<span class="str">"far_battle_ing-1.PNG"</span>,<span class="dig">2</span>):
+        team_state = <span class="str">"active"</span>
+    <span class="kw">else</span>:
+        team_state = <span class="str">"stop"</span>
+        click_random_position(supply_area, <span class="str">"allsupplybtn-3.PNG"</span>, -<span class="dig">8</span>, <span class="dig">8</span>, -<span class="dig">8</span>, <span class="dig">8</span>)
 
-<span class="kw">def</span> start_mission(team):
+    <span class="kw">return</span> team_state
 
-    <span class="kw">if</span> team == <span class="dig">2</span>:
-        reg.<span class="skw">wait</span>(<span class="str">"farbettlemession5-1.PNG"</span>,<span class="dig">3</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">click</span>(<span class="str">"farbettlemession5-1.PNG"</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-    <span class="kw">elif</span> team == <span class="dig">3</span>:
-        reg.<span class="skw">wait</span>(<span class="str">"map3btn.PNG"</span>,<span class="dig">3</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">click</span>(<span class="str">"map3btn.PNG"</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">wait</span>(<span class="str">"mission21.PNG"</span>,<span class="dig">3</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">click</span>(<span class="str">"mission21.PNG"</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-    far_battle_detail_area.<span class="skw">wait</span>(<span class="str">"farbettlecheckbtn-1.PNG"</span>,<span class="dig">3</span>)
+<span class="kw">def</span> start_mission(mission_id, team_num = <span class="dig">2</span>):
+
+    <span class="kw">if</span> mission_id == <span class="dig">2</span>:
+        click_random_position(reg, <span class="str">"mission_id_2.PNG"</span>, -<span class="dig">20</span>, <span class="dig">200</span>, -<span class="dig">10</span>, <span class="dig">10</span>)
+    <span class="kw">elif</span> mission_id == <span class="dig">3</span>:
+        click_random_position(reg, <span class="str">"mission_id_3.PNG"</span>, -<span class="dig">20</span>, <span class="dig">200</span>, -<span class="dig">10</span>, <span class="dig">10</span>)
+    <span class="kw">elif</span> mission_id == <span class="dig">5</span>:
+        click_random_position(reg, <span class="str">"mission_id_5.PNG"</span>, -<span class="dig">20</span>, <span class="dig">200</span>, -<span class="dig">10</span>, <span class="dig">10</span>)
+    <span class="kw">elif</span> mission_id == <span class="dig">9</span>:
+        click_random_position(reg, <span class="str">"far_battle_btn_map2.PNG"</span>, -<span class="dig">20</span>, <span class="dig">20</span>, -<span class="dig">15</span>, <span class="dig">15</span>)
+        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">6</span>))
+        click_random_position(reg, <span class="str">"mission_id_5.PNG"</span>, -<span class="dig">20</span>, <span class="dig">200</span>, -<span class="dig">10</span>, <span class="dig">10</span>)
     <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-    far_battle_detail_area.<span class="skw">click</span>(<span class="str">"farbettlecheckbtn-1.PNG"</span>)
+
+    reg.<span class="skw">wait</span>(<span class="str">"far_battle_check_btn.PNG"</span>,<span class="dig">3</span>)
+    click_random_position(reg, <span class="str">"far_battle_check_btn.PNG"</span>, -<span class="dig">40</span>, <span class="dig">40</span>, -<span class="dig">15</span>, <span class="dig">15</span>)
+    hover(Location(<span class="dig">1779</span>, <span class="dig">412</span>))
     <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-    <span class="kw">if</span> team == <span class="dig">3</span>:
-        reg.<span class="skw">wait</span>(<span class="str">"far_battle_team_btn_3.PNG"</span>,<span class="dig">3</span>)
+
+    <span class="kw">if</span> team_num == <span class="dig">3</span>:
+        click_random_position(reg, <img src="1463680950708.png" />, -<span class="dig">8</span>, <span class="dig">8</span>, -<span class="dig">8</span>, <span class="dig">8</span>)
         <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">click</span>(<span class="str">"far_battle_team_btn_3.PNG"</span>)
-    far_battle_detail_area.<span class="skw">wait</span>(<span class="str">"farbettlestartbtn-1.PNG"</span>,<span class="dig">3</span>)
-    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-    far_battle_detail_area.<span class="skw">click</span>(<span class="str">"farbettlestartbtn-1.PNG"</span>)
-    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+        <span class="kw">pass</span>
+    <span class="kw">elif</span> team_num == <span class="dig">4</span>:
+        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+        <span class="kw">pass</span>
+
+    reg.<span class="skw">wait</span>(<span class="str">"far_battle_start_btn.PNG"</span>,<span class="dig">3</span>)
+    click_random_position(reg, <span class="str">"far_battle_start_btn.PNG"</span>, -<span class="dig">65</span>, <span class="dig">65</span>, -<span class="dig">15</span>, <span class="dig">15</span>)
+    hover(Location(<span class="dig">1779</span>, <span class="dig">412</span>))
+    <span class="skw">sleep</span>(random.randint(<span class="dig">5</span>,<span class="dig">10</span>))
 
 <span class="kw">def</span> auto_far_battle():
     <span class="kw">while</span> True:
         <span class="kw">try</span>:
-            gohomepage()
-            team_target = <span class="dig">2</span>
-            <span class="kw">while</span> team_target &lt; <span class="dig">4</span>:
+            go_home_page()
+            check_mission_complete_message()
+            go_supply_page()
+            team2_state = False
+            team3_state = False
+            team4_state = False
+            team2_state = check_mission_state_and_supply(<span class="dig">2</span>)
+            <span class="cmt">#team3_state = check_mission_state_and_supply(3)</span>
+            <span class="cmt">#team4_state = check_mission_state_and_supply(4)</span>
+            go_home_page()
+            check_mission_complete_message()
+
+            <span class="kw">if</span> team2_state == <span class="str">"stop"</span> <span class="kw">or</span> team3_state == <span class="str">"stop"</span> <span class="kw">or</span> team4_state == <span class="str">"stop"</span>:
                 go_far_battle_page()
-                team_mission_state = checkmissionstate(team_target)
-                <span class="kw">if</span> team_mission_state == <span class="str">"stop"</span>:
-                    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">6</span>))
-                    gohomepage()
-                    autosupply(team_target)
-                    go_far_battle_page()
-                    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">6</span>))
-                    start_mission(team_target)
-                    <span class="skw">sleep</span>(random.randint(<span class="dig">5</span>,<span class="dig">10</span>))
-                    gohomepage()
-                <span class="kw">else</span>:
-                    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">6</span>))
-                    gohomepage()
-                team_target = team_target + <span class="dig">1</span>
-                <span class="skw">sleep</span>(random.randint(<span class="dig">5</span>,<span class="dig">10</span>))
-            <span class="skw">sleep</span>(<span class="dig">1800</span>)
+                <span class="kw">if</span> team2_state == <span class="str">"stop"</span>:
+                    start_mission(<span class="dig">5</span>, <span class="dig">2</span>)
+                    team2_state = <span class="str">"active"</span>
+                <span class="kw">if</span> team3_state == <span class="str">"stop"</span>:
+                    start_mission(<span class="dig">2</span>, <span class="dig">3</span>)
+                    team3_state = <span class="str">"active"</span>
+                <span class="kw">if</span> team4_state == <span class="str">"stop"</span>:
+                    start_mission(<span class="dig">3</span>, <span class="dig">4</span>)
+                    team4_state = <span class="str">"active"</span>
+                go_home_page()
+                check_mission_complete_message()
+            <span class="kw">else</span>:
+                <span class="kw">pass</span>
+            <span class="skw">sleep</span>(random.randint(<span class="dig">600</span>, <span class="dig">1200</span>))
+
         <span class="kw">except</span>:
             restart_game()
-<span class="cmt">#auto_far_battle()</span>
 
+auto_far_battle()
 </pre>
 </body>
 </html>
