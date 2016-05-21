@@ -100,6 +100,7 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
         currentpage = <span class="str">"not find"</span>
     <span class="kw">return</span> currentpage
 
+
 <span class="kw">def</span> restart_game():
     <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"supply.PNG"</span>,<span class="dig">2</span>):
         <span class="kw">while</span> <span class="kw">not</span> start_btn_area.exists(<span class="str">"gamestart-3.PNG"</span>, <span class="dig">5</span>):
@@ -109,31 +110,20 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
         click_random_position(reg, <span class="str">"gamestart-3.PNG"</span>, -<span class="dig">100</span>, <span class="dig">100</span>, -<span class="dig">25</span> ,<span class="dig">25</span>)
         reg.exists(<span class="str">"supply.PNG"</span>,<span class="dig">15</span>)
 
-<span class="kw">def</span> check_mission_complete_message():
-    hover(Location(random.randint(<span class="dig">1634</span>,<span class="dig">1725</span>), random.randint(<span class="dig">416</span>,<span class="dig">496</span>)))
-    <span class="kw">if</span> mission_complete_message_area.exists(<img src="1463317363839.png" />, <span class="dig">2</span>):
-        x = <span class="dig">0</span>
-        click_position = Location(random.randint(<span class="dig">1162</span>,<span class="dig">1162</span>+<span class="dig">400</span>), random.randint(<span class="dig">308</span>,<span class="dig">308</span>+<span class="dig">200</span>))
-        <span class="kw">while</span> x &lt; <span class="dig">5</span>:
-            x = x + <span class="dig">1</span>
-            <span class="skw">click</span>(click_position)
-            <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-            check_outline()
-
 <span class="kw">def</span> go_home_page():
     hover(Location(random.randint(<span class="dig">1634</span>,<span class="dig">1725</span>), random.randint(<span class="dig">416</span>,<span class="dig">496</span>)))
     currentpage = check_current_page()
     <span class="kw">if</span> currentpage == <span class="str">"homepage"</span>:
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">4</span>))
     <span class="kw">elif</span> currentpage == <span class="str">"supplypage"</span> <span class="kw">or</span> currentpage == <span class="str">"far_battle_page"</span>:
         reg.<span class="skw">wait</span>(<span class="str">"gohomebtn.PNG"</span>,<span class="dig">3</span>)
         click_random_position(reg, <span class="str">"gohomebtn.PNG"</span>, -<span class="dig">10</span>, <span class="dig">10</span>, -<span class="dig">35</span> ,<span class="dig">35</span>)
         <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+        hover(Location(random.randint(<span class="dig">1634</span>,<span class="dig">1725</span>), random.randint(<span class="dig">416</span>,<span class="dig">496</span>)))
 
 <span class="kw">def</span> go_supply_page():
     hover(Location(random.randint(<span class="dig">1634</span>,<span class="dig">1725</span>), random.randint(<span class="dig">416</span>,<span class="dig">496</span>)))
     currentpage = check_current_page()
-    <span class="kw">print</span> currentpage
     <span class="kw">if</span> currentpage == <span class="str">"homepage"</span>:
         reg.<span class="skw">wait</span>(<span class="str">"supply.PNG"</span>,<span class="dig">3</span>)
         click_random_position(reg, <span class="str">"supply.PNG"</span>, -<span class="dig">25</span>, <span class="dig">25</span>, -<span class="dig">25</span> ,<span class="dig">25</span>)
@@ -149,7 +139,36 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
     click_random_position(supply_area, <span class="str">"fight-4.PNG"</span>, -<span class="dig">50</span>, <span class="dig">50</span>, -<span class="dig">40</span>, <span class="dig">40</span>)
     <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
     reg.<span class="skw">wait</span>(<span class="str">"farbettlebtn-1.PNG"</span>,<span class="dig">10</span>)
-    click_random_position(reg, <span class="str">"farbettlebtn-1.PNG"</span>, -<span class="dig">50</span>, <span class="dig">50</span>, -<span class="dig">40</span>, <span class="dig">40</span>)
+    click_random_position(reg, <span class="str">"farbettlebtn-1.PNG"</span>, -<span class="dig">80</span>, <span class="dig">80</span>, -<span class="dig">80</span>, <span class="dig">80</span>)
+
+<span class="kw">def</span> finish_mission_complete_message():
+    x = <span class="dig">0</span>
+    click_position = Location(random.randint(<span class="dig">1162</span>,<span class="dig">1162</span>+<span class="dig">400</span>), random.randint(<span class="dig">308</span>,<span class="dig">308</span>+<span class="dig">200</span>))
+    <span class="kw">while</span> x &lt; <span class="dig">4</span>:
+        x = x + <span class="dig">1</span>
+        <span class="skw">click</span>(click_position)
+        <span class="skw">sleep</span>(random.randint(<span class="dig">4</span>,<span class="dig">7</span>))
+        check_outline()
+
+<span class="kw">def</span> check_mission_complete_message():
+    <span class="kw">if</span> mission_complete_message_area.exists(<img src="1463317363839.png" />, <span class="dig">2</span>):
+        finish_mission_complete_message()
+        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+        <span class="kw">if</span> mission_complete_message_area.exists(<img src="1463317363839.png" />, <span class="dig">2</span>):
+            finish_mission_complete_message()
+
+    <span class="kw">else</span>:
+        current_page = check_current_page()
+        <span class="kw">if</span> current_page == <span class="str">"homepage"</span>:
+            go_supply_page()
+            <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+            go_home_page()
+            <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+        <span class="kw">if</span> mission_complete_message_area.exists(<img src="1463317363839.png" />, <span class="dig">2</span>):
+            finish_mission_complete_message()
+            <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+            <span class="kw">if</span> mission_complete_message_area.exists(<img src="1463317363839.png" />, <span class="dig">2</span>):
+                finish_mission_complete_message()
 
 <span class="kw">def</span> check_mission_state_and_supply(team_num):
     <span class="kw">if</span> team_num == <span class="dig">2</span>:
@@ -185,7 +204,7 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
 
     reg.<span class="skw">wait</span>(<span class="str">"far_battle_check_btn.PNG"</span>,<span class="dig">3</span>)
     click_random_position(reg, <span class="str">"far_battle_check_btn.PNG"</span>, -<span class="dig">40</span>, <span class="dig">40</span>, -<span class="dig">15</span>, <span class="dig">15</span>)
-    hover(Location(<span class="dig">1779</span>, <span class="dig">412</span>))
+    hover(Location(random.randint(<span class="dig">1656</span>, <span class="dig">1656</span> + <span class="dig">250</span>), random.randint(<span class="dig">241</span>, <span class="dig">241</span> + <span class="dig">150</span>)))
     <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
 
     <span class="kw">if</span> team_num == <span class="dig">3</span>:
@@ -198,11 +217,13 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
 
     reg.<span class="skw">wait</span>(<span class="str">"far_battle_start_btn.PNG"</span>,<span class="dig">3</span>)
     click_random_position(reg, <span class="str">"far_battle_start_btn.PNG"</span>, -<span class="dig">65</span>, <span class="dig">65</span>, -<span class="dig">15</span>, <span class="dig">15</span>)
-    hover(Location(<span class="dig">1779</span>, <span class="dig">412</span>))
+    hover(Location(random.randint(<span class="dig">1656</span>, <span class="dig">1656</span> + <span class="dig">250</span>), random.randint(<span class="dig">241</span>, <span class="dig">241</span> + <span class="dig">150</span>)))
     <span class="skw">sleep</span>(random.randint(<span class="dig">5</span>,<span class="dig">10</span>))
 
-<span class="kw">def</span> auto_far_battle():
-    <span class="kw">while</span> True:
+<span class="kw">def</span> auto_far_battle(run_turn_min, run_total_count):
+    i = <span class="dig">0</span>
+    <span class="kw">while</span> i &lt; run_total_count :
+        i = i + <span class="dig">1</span>
         <span class="kw">try</span>:
             go_home_page()
             check_mission_complete_message()
@@ -214,12 +235,11 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
             <span class="cmt">#team3_state = check_mission_state_and_supply(3)</span>
             <span class="cmt">#team4_state = check_mission_state_and_supply(4)</span>
             go_home_page()
-            check_mission_complete_message()
 
             <span class="kw">if</span> team2_state == <span class="str">"stop"</span> <span class="kw">or</span> team3_state == <span class="str">"stop"</span> <span class="kw">or</span> team4_state == <span class="str">"stop"</span>:
                 go_far_battle_page()
                 <span class="kw">if</span> team2_state == <span class="str">"stop"</span>:
-                    start_mission(<span class="dig">5</span>, <span class="dig">2</span>)
+                    start_mission(<span class="dig">3</span>, <span class="dig">2</span>)
                     team2_state = <span class="str">"active"</span>
                 <span class="kw">if</span> team3_state == <span class="str">"stop"</span>:
                     start_mission(<span class="dig">2</span>, <span class="dig">3</span>)
@@ -228,15 +248,14 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
                     start_mission(<span class="dig">3</span>, <span class="dig">4</span>)
                     team4_state = <span class="str">"active"</span>
                 go_home_page()
-                check_mission_complete_message()
             <span class="kw">else</span>:
                 <span class="kw">pass</span>
-            <span class="skw">sleep</span>(random.randint(<span class="dig">600</span>, <span class="dig">1200</span>))
+            <span class="skw">sleep</span>(random.randint(run_turn_min * <span class="dig">60</span>, run_turn_min * <span class="dig">60</span>))
 
         <span class="kw">except</span>:
             restart_game()
 
-auto_far_battle()
+auto_far_battle(<span class="dig">30</span>, <span class="dig">6</span>)
 </pre>
 </body>
 </html>

@@ -28,6 +28,7 @@ def check_current_page():
         currentpage = "not find"
     return currentpage
 
+
 def restart_game():
     while not reg.exists("supply.PNG",2):
         while not start_btn_area.exists("gamestart-3.PNG", 5):
@@ -37,31 +38,20 @@ def restart_game():
         click_random_position(reg, "gamestart-3.PNG", -100, 100, -25 ,25)
         reg.exists("supply.PNG",15)
 
-def check_mission_complete_message():
-    hover(Location(random.randint(1634,1725), random.randint(416,496)))
-    if mission_complete_message_area.exists("1463317363839.png", 2):
-        x = 0
-        click_position = Location(random.randint(1162,1162+400), random.randint(308,308+200))
-        while x < 5:
-            x = x + 1
-            click(click_position)
-            sleep(random.randint(2,5))
-            check_outline()
-
 def go_home_page():
     hover(Location(random.randint(1634,1725), random.randint(416,496))) 
     currentpage = check_current_page()
     if currentpage == "homepage":
-        sleep(random.randint(2,5))
+        sleep(random.randint(2,4))
     elif currentpage == "supplypage" or currentpage == "far_battle_page":
         reg.wait("gohomebtn.PNG",3)
-        click_random_position(reg, "gohomebtn.PNG", -10, 10, -35 ,35)
-        sleep(random.randint(2,5))        
+        click_random_position(reg, "gohomebtn.PNG", -10, 10, -35 ,35)        
+        sleep(random.randint(2,5))
+        hover(Location(random.randint(1634,1725), random.randint(416,496))) 
 
 def go_supply_page():
     hover(Location(random.randint(1634,1725), random.randint(416,496)))
     currentpage = check_current_page()
-    print currentpage
     if currentpage == "homepage":
         reg.wait("supply.PNG",3)
         click_random_position(reg, "supply.PNG", -25, 25, -25 ,25)
@@ -77,7 +67,36 @@ def go_far_battle_page():
     click_random_position(supply_area, "fight-4.PNG", -50, 50, -40, 40) 
     sleep(random.randint(2,5))
     reg.wait("farbettlebtn-1.PNG",10)   
-    click_random_position(reg, "farbettlebtn-1.PNG", -50, 50, -40, 40) 
+    click_random_position(reg, "farbettlebtn-1.PNG", -80, 80, -80, 80) 
+    
+def finish_mission_complete_message():    
+    x = 0
+    click_position = Location(random.randint(1162,1162+400), random.randint(308,308+200))
+    while x < 4:
+        x = x + 1
+        click(click_position)
+        sleep(random.randint(4,7))
+        check_outline()
+
+def check_mission_complete_message():
+    if mission_complete_message_area.exists("1463317363839.png", 2):
+        finish_mission_complete_message()
+        sleep(random.randint(2,5))
+        if mission_complete_message_area.exists("1463317363839.png", 2):
+            finish_mission_complete_message()
+
+    else:
+        current_page = check_current_page()
+        if current_page == "homepage": 
+            go_supply_page()
+            sleep(random.randint(2,5))
+            go_home_page()
+            sleep(random.randint(2,5))
+        if mission_complete_message_area.exists("1463317363839.png", 2):
+            finish_mission_complete_message()
+            sleep(random.randint(2,5))
+            if mission_complete_message_area.exists("1463317363839.png", 2):
+                finish_mission_complete_message()
 
 def check_mission_state_and_supply(team_num):
     if team_num == 2:        
@@ -113,7 +132,7 @@ def start_mission(mission_id, team_num = 2):
         
     reg.wait("far_battle_check_btn.PNG",3)
     click_random_position(reg, "far_battle_check_btn.PNG", -40, 40, -15, 15)
-    hover(Location(1779, 412))
+    hover(Location(random.randint(1656, 1656 + 250), random.randint(241, 241 + 150)))
     sleep(random.randint(2,5))
     
     if team_num == 3:
@@ -126,11 +145,13 @@ def start_mission(mission_id, team_num = 2):
     
     reg.wait("far_battle_start_btn.PNG",3)
     click_random_position(reg, "far_battle_start_btn.PNG", -65, 65, -15, 15)
-    hover(Location(1779, 412))
+    hover(Location(random.randint(1656, 1656 + 250), random.randint(241, 241 + 150)))
     sleep(random.randint(5,10))
 
-def auto_far_battle():
-    while True:
+def auto_far_battle(run_turn_min, run_total_count):
+    i = 0 
+    while i < run_total_count :
+        i = i + 1
         try:
             go_home_page()
             check_mission_complete_message()
@@ -142,12 +163,11 @@ def auto_far_battle():
             #team3_state = check_mission_state_and_supply(3)
             #team4_state = check_mission_state_and_supply(4)
             go_home_page()
-            check_mission_complete_message()
             
             if team2_state == "stop" or team3_state == "stop" or team4_state == "stop":
                 go_far_battle_page()
                 if team2_state == "stop":
-                    start_mission(5, 2)
+                    start_mission(3, 2)
                     team2_state = "active"
                 if team3_state == "stop":
                     start_mission(2, 3)
@@ -156,12 +176,11 @@ def auto_far_battle():
                     start_mission(3, 4)
                     team4_state = "active"            
                 go_home_page()
-                check_mission_complete_message()
             else: 
                 pass
-            sleep(random.randint(600, 1200))
+            sleep(random.randint(run_turn_min * 60, run_turn_min * 60))
                             
         except:
             restart_game()
             
-auto_far_battle()
+auto_far_battle(30, 6)
