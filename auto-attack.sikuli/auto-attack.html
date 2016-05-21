@@ -175,12 +175,12 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
                 <span class="skw">click</span>(Location(formation_click_position_x + random.randint(-<span class="dig">20</span>, <span class="dig">20</span>), formation_click_position_y + random.randint(-<span class="dig">20</span>, <span class="dig">20</span>)))
                 check_outline()
             <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        reg.<span class="skw">click</span>(<img src="1462985138674-1.png" />)
+        click_random_position(reg, <img src="1462985138674-1.png" />, -<span class="dig">40</span>, <span class="dig">40</span>, -<span class="dig">40</span>, <span class="dig">40</span>)
 
 
 <span class="kw">def</span> automap1_5_3():
-    autosupply()
-    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+    <span class="cmt">#autosupply()</span>
+    <span class="cmt">#sleep(random.randint(2,5)) </span>
     startmap1_5()
     <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
 
@@ -214,13 +214,16 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
     attack_spot(True)
     <span class="skw">sleep</span>(<span class="dig">2</span>)
 
-attack_count = <span class="dig">0</span>
-<span class="kw">while</span> attack_count &lt; <span class="dig">8</span> :
-    <span class="kw">try</span>:
-        automap1_5_3()
-        attack_count = attack_count + <span class="dig">1</span>
-    <span class="kw">except</span>:
-        restart_game()
+automap1_5_3()
+
+<span class="kw">def</span> loop_auto_attack(attack_count):
+    i = <span class="dig">0</span>
+    <span class="kw">while</span> i &lt; attack_count :
+        <span class="kw">try</span>:
+            automap1_5_3()
+            i = i + <span class="dig">1</span>
+        <span class="kw">except</span>:
+            restart_game()
 </pre>
 </body>
 </html>

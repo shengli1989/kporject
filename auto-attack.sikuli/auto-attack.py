@@ -103,12 +103,12 @@ def attack_spot(last_spot = False):
                 click(Location(formation_click_position_x + random.randint(-20, 20), formation_click_position_y + random.randint(-20, 20)))
                 check_outline()
             sleep(random.randint(2,5))  
-        reg.click("1462985138674-1.png")
+        click_random_position(reg, "1462985138674-1.png", -40, 40, -40, 40)
 
 
 def automap1_5_3():
-    autosupply()
-    sleep(random.randint(2,5)) 
+    #autosupply()
+    #sleep(random.randint(2,5)) 
     startmap1_5()
     sleep(random.randint(2,5)) 
 
@@ -142,10 +142,13 @@ def automap1_5_1():
     attack_spot(True)
     sleep(2)
 
-attack_count = 0
-while attack_count < 8 :    
-    try:
-        automap1_5_3()
-        attack_count = attack_count + 1
-    except:
-        restart_game()
+automap1_5_3()
+
+def loop_auto_attack(attack_count):    
+    i = 0
+    while i < attack_count :    
+        try:
+            automap1_5_3()
+            i = i + 1
+        except:
+            restart_game()
