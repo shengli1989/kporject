@@ -160,14 +160,14 @@ def auto_far_battle(run_turn_min, run_total_count):
             team3_state = False
             team4_state = False
             team2_state = check_mission_state_and_supply(2)
-            #team3_state = check_mission_state_and_supply(3)
+            team3_state = check_mission_state_and_supply(3)
             #team4_state = check_mission_state_and_supply(4)
             go_home_page()
             
             if team2_state == "stop" or team3_state == "stop" or team4_state == "stop":
                 go_far_battle_page()
                 if team2_state == "stop":
-                    start_mission(3, 2)
+                    start_mission(5, 2)
                     team2_state = "active"
                 if team3_state == "stop":
                     start_mission(2, 3)
@@ -178,7 +178,7 @@ def auto_far_battle(run_turn_min, run_total_count):
                 go_home_page()
             else: 
                 pass
-            sleep(random.randint(run_turn_min * 60, run_turn_min * 60))
+            sleep(random.randint(run_turn_min, run_turn_min + 10) * 60 )
                             
         except:
             restart_game()

@@ -232,14 +232,14 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
             team3_state = False
             team4_state = False
             team2_state = check_mission_state_and_supply(<span class="dig">2</span>)
-            <span class="cmt">#team3_state = check_mission_state_and_supply(3)</span>
+            team3_state = check_mission_state_and_supply(<span class="dig">3</span>)
             <span class="cmt">#team4_state = check_mission_state_and_supply(4)</span>
             go_home_page()
 
             <span class="kw">if</span> team2_state == <span class="str">"stop"</span> <span class="kw">or</span> team3_state == <span class="str">"stop"</span> <span class="kw">or</span> team4_state == <span class="str">"stop"</span>:
                 go_far_battle_page()
                 <span class="kw">if</span> team2_state == <span class="str">"stop"</span>:
-                    start_mission(<span class="dig">3</span>, <span class="dig">2</span>)
+                    start_mission(<span class="dig">5</span>, <span class="dig">2</span>)
                     team2_state = <span class="str">"active"</span>
                 <span class="kw">if</span> team3_state == <span class="str">"stop"</span>:
                     start_mission(<span class="dig">2</span>, <span class="dig">3</span>)
@@ -250,7 +250,7 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
                 go_home_page()
             <span class="kw">else</span>:
                 <span class="kw">pass</span>
-            <span class="skw">sleep</span>(random.randint(run_turn_min * <span class="dig">60</span>, run_turn_min * <span class="dig">60</span>))
+            <span class="skw">sleep</span>(random.randint(run_turn_min, run_turn_min + <span class="dig">10</span>) * <span class="dig">60</span> )
 
         <span class="kw">except</span>:
             restart_game()
