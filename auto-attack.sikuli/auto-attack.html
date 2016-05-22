@@ -144,7 +144,11 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
     hover(Location(formation_click_position_x, formation_click_position_y))
 
     <span class="kw">if</span> formation == <span class="str">"vertical"</span>:
-        <span class="kw">pass</span>
+        <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"formation_step.PNG"</span>):
+            <span class="kw">if</span> reg.exists(<span class="str">"compass.PNG"</span>):
+                <span class="skw">click</span>(Location(formation_click_position_x + random.randint(-<span class="dig">20</span>, <span class="dig">20</span>), formation_click_position_y + random.randint(-<span class="dig">20</span>, <span class="dig">20</span>)))
+            <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+        click_random_position(reg, <span class="str">"formation_btn_vertical.PNG"</span>, -<span class="dig">40</span>, <span class="dig">40</span>, <span class="dig">60</span>, <span class="dig">80</span>)
     <span class="kw">elif</span> formation == <span class="str">"horzontal"</span>:
         <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"formation_step.PNG"</span>):
             <span class="kw">if</span> reg.exists(<span class="str">"compass.PNG"</span>):
@@ -166,6 +170,7 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
                 <span class="skw">click</span>(Location(formation_click_position_x + random.randint(-<span class="dig">20</span>, <span class="dig">20</span>), formation_click_position_y + random.randint(-<span class="dig">20</span>, <span class="dig">20</span>)))
                 check_outline()
             <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+        reg.<span class="skw">wait</span>(<span class="str">"nextspotbtn.PNG"</span>,<span class="dig">5</span>)
         click_random_position(reg, <span class="str">"nextspotbtn.PNG"</span>, -<span class="dig">40</span>, <span class="dig">40</span>, -<span class="dig">40</span>, <span class="dig">40</span>)
     <span class="kw">else</span>:
         <span class="kw">while</span> <span class="kw">not</span> reg.exists(<img src="1462985138674-1.png" />):
@@ -175,12 +180,13 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
                 <span class="skw">click</span>(Location(formation_click_position_x + random.randint(-<span class="dig">20</span>, <span class="dig">20</span>), formation_click_position_y + random.randint(-<span class="dig">20</span>, <span class="dig">20</span>)))
                 check_outline()
             <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+        reg.<span class="skw">wait</span>(<img src="1462985138674-1.png" />,<span class="dig">5</span>)
         click_random_position(reg, <img src="1462985138674-1.png" />, -<span class="dig">40</span>, <span class="dig">40</span>, -<span class="dig">40</span>, <span class="dig">40</span>)
 
 
 <span class="kw">def</span> automap1_5_3():
-    <span class="cmt">#autosupply()</span>
-    <span class="cmt">#sleep(random.randint(2,5)) </span>
+    autosupply()
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
     startmap1_5()
     <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
 
@@ -214,8 +220,6 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
     attack_spot(True)
     <span class="skw">sleep</span>(<span class="dig">2</span>)
 
-automap1_5_3()
-
 <span class="kw">def</span> loop_auto_attack(attack_count):
     i = <span class="dig">0</span>
     <span class="kw">while</span> i &lt; attack_count :
@@ -224,6 +228,8 @@ automap1_5_3()
             i = i + <span class="dig">1</span>
         <span class="kw">except</span>:
             restart_game()
+
+loop_auto_attack(<span class="dig">3</span>)
 </pre>
 </body>
 </html>

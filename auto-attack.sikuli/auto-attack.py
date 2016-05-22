@@ -72,7 +72,11 @@ def edit_formation(formation = False):
     hover(Location(formation_click_position_x, formation_click_position_y))
      
     if formation == "vertical":
-        pass
+        while not reg.exists("formation_step.PNG"):
+            if reg.exists("compass.PNG"): 
+                click(Location(formation_click_position_x + random.randint(-20, 20), formation_click_position_y + random.randint(-20, 20))) 
+            sleep(random.randint(2,5))
+        click_random_position(reg, "formation_btn_vertical.PNG", -40, 40, 60, 80)
     elif formation == "horzontal":       
         while not reg.exists("formation_step.PNG"):
             if reg.exists("compass.PNG"): 
@@ -94,6 +98,7 @@ def attack_spot(last_spot = False):
                 click(Location(formation_click_position_x + random.randint(-20, 20), formation_click_position_y + random.randint(-20, 20)))
                 check_outline()
             sleep(random.randint(2,5))        
+        reg.wait("nextspotbtn.PNG",5)
         click_random_position(reg, "nextspotbtn.PNG", -40, 40, -40, 40)
     else:
         while not reg.exists("1462985138674-1.png"):
@@ -103,12 +108,13 @@ def attack_spot(last_spot = False):
                 click(Location(formation_click_position_x + random.randint(-20, 20), formation_click_position_y + random.randint(-20, 20)))
                 check_outline()
             sleep(random.randint(2,5))  
+        reg.wait("1462985138674-1.png",5)
         click_random_position(reg, "1462985138674-1.png", -40, 40, -40, 40)
 
 
 def automap1_5_3():
-    #autosupply()
-    #sleep(random.randint(2,5)) 
+    autosupply()
+    sleep(random.randint(2,5)) 
     startmap1_5()
     sleep(random.randint(2,5)) 
 
@@ -142,8 +148,6 @@ def automap1_5_1():
     attack_spot(True)
     sleep(2)
 
-automap1_5_3()
-
 def loop_auto_attack(attack_count):    
     i = 0
     while i < attack_count :    
@@ -152,3 +156,5 @@ def loop_auto_attack(attack_count):
             i = i + 1
         except:
             restart_game()
+
+loop_auto_attack(3)
