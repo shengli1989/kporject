@@ -71,7 +71,7 @@ def go_far_battle_page():
     
 def finish_mission_complete_message():    
     x = 0
-    click_position = Location(random.randint(1162,1162+400), random.randint(308,308+200))
+    click_position = Location(random.randint(1634,1725), random.randint(416,496))
     while x < 4:
         x = x + 1
         click(click_position)
@@ -183,4 +183,4 @@ def auto_far_battle(run_turn_min, run_total_count):
         except:
             restart_game()
             
-auto_far_battle(30, 6)
+auto_far_battle(30, 16)
