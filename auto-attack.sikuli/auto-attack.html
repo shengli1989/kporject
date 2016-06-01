@@ -99,6 +99,12 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
             <span class="skw">sleep</span>(random.randint(<span class="dig">10</span>,<span class="dig">25</span>))
         click_random_position(reg, <span class="str">"gamestart-3.PNG"</span>, -<span class="dig">100</span>, <span class="dig">100</span>, -<span class="dig">25</span> ,<span class="dig">25</span>)
         reg.exists(<span class="str">"supply.PNG"</span>,<span class="dig">15</span>)
+<img src="1464358801995.png" />
+<img src="1464358912579.png" />
+<img src="1464358963359.png" />
+<img src="1464359082189.png" />
+<img src="1464359093614.png" />
+<img src="1464359136506.png" />
 
 <span class="kw">def</span> autosupply():
     reg.<span class="skw">wait</span>(<span class="str">"supply-1.PNG"</span>,<span class="dig">3</span>)
@@ -112,31 +118,43 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
     <span class="skw">sleep</span>(<span class="dig">1</span>)
     hover(Location(random.randint(<span class="dig">1634</span>,<span class="dig">1725</span>), random.randint(<span class="dig">416</span>,<span class="dig">496</span>)))
 
-<span class="kw">def</span> startmap1_5():
-    <span class="kw">try</span>:
-        hover(Location(random.randint(<span class="dig">1634</span>,<span class="dig">1725</span>), random.randint(<span class="dig">416</span>,<span class="dig">496</span>)))
-        reg.<span class="skw">wait</span>(<span class="str">"fight-4.PNG"</span>,<span class="dig">10</span>)
-        click_random_position(reg, <span class="str">"fight-4.PNG"</span>, -<span class="dig">50</span>, <span class="dig">50</span>, -<span class="dig">40</span>, <span class="dig">40</span>)
-        hover(Location(random.randint(<span class="dig">1634</span>,<span class="dig">1725</span>), random.randint(<span class="dig">416</span>,<span class="dig">496</span>)))
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">4</span>))
-        reg.<span class="skw">wait</span>(<span class="str">"fight2-3.PNG"</span>,<span class="dig">5</span>)
-        click_random_position(reg, <span class="str">"fight2-3.PNG"</span>, -<span class="dig">85</span>, <span class="dig">85</span>, -<span class="dig">85</span>, <span class="dig">85</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">4</span>))
-        reg.<span class="skw">wait</span>(<span class="str">"map1nextbtn-1.PNG"</span>,<span class="dig">5</span>)
-        click_random_position(reg, <span class="str">"map1nextbtn-1.PNG"</span>, -<span class="dig">50</span>, <span class="dig">50</span>, -<span class="dig">50</span>, <span class="dig">50</span>)
-        hover(Location(random.randint(<span class="dig">1504</span>-<span class="dig">30</span>, <span class="dig">1504</span>+<span class="dig">30</span>), random.randint(<span class="dig">552</span>-<span class="dig">30</span>, <span class="dig">552</span>+<span class="dig">30</span>)))
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">4</span>))
-        reg.<span class="skw">wait</span>(<span class="str">"map1-6.PNG"</span>,<span class="dig">5</span>)
-        click_random_position(reg, <span class="str">"map1-6.PNG"</span>, -<span class="dig">300</span>, <span class="dig">200</span>, -<span class="dig">70</span>, <span class="dig">30</span>)
-        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">4</span>))
+<span class="kw">def</span> go_to_fight_page():
+    hover(Location(random.randint(<span class="dig">1634</span>,<span class="dig">1725</span>), random.randint(<span class="dig">416</span>,<span class="dig">496</span>)))
+    reg.<span class="skw">wait</span>(<span class="str">"fight-4.PNG"</span>,<span class="dig">10</span>)
+    click_random_position(reg, <span class="str">"fight-4.PNG"</span>, -<span class="dig">50</span>, <span class="dig">50</span>, -<span class="dig">40</span>, <span class="dig">40</span>)
+    hover(Location(random.randint(<span class="dig">1634</span>,<span class="dig">1725</span>), random.randint(<span class="dig">416</span>,<span class="dig">496</span>)))
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">4</span>))
+    reg.<span class="skw">wait</span>(<span class="str">"fight2-3.PNG"</span>,<span class="dig">5</span>)
+    click_random_position(reg, <span class="str">"fight2-3.PNG"</span>, -<span class="dig">85</span>, <span class="dig">85</span>, -<span class="dig">85</span>, <span class="dig">85</span>)
+
+<span class="kw">def</span> click_fight_btn():
         reg.<span class="skw">wait</span>(<span class="str">"checkbtn-3.PNG"</span>,<span class="dig">5</span>)
         click_random_position(reg, <span class="str">"checkbtn-3.PNG"</span>, -<span class="dig">40</span>, <span class="dig">40</span>, -<span class="dig">17</span>, <span class="dig">17</span>)
         hover(Location(random.randint(<span class="dig">1684</span>-<span class="dig">30</span>,<span class="dig">1684</span>+<span class="dig">30</span>), random.randint(<span class="dig">382</span>-<span class="dig">30</span>,<span class="dig">382</span>+<span class="dig">30</span>)))
         <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">4</span>))
         reg.<span class="skw">wait</span>(<span class="str">"startfightbtn-3.PNG"</span>,<span class="dig">5</span>)
         click_random_position(reg, <span class="str">"startfightbtn-3.PNG"</span>, -<span class="dig">60</span>, <span class="dig">60</span>, -<span class="dig">17</span>, <span class="dig">17</span>)
-    <span class="kw">except</span>:
-        <span class="kw">pass</span>
+
+<span class="kw">def</span> choise_map_1_1():
+    reg.<span class="skw">wait</span>(<img src="1464280410597.png" /> ,<span class="dig">5</span>)
+    click_random_position(reg, <img src="1464280410597.png" />, -<span class="dig">140</span>, <span class="dig">140</span>, -<span class="dig">50</span>, <span class="dig">50</span>)
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">4</span>))
+
+<span class="kw">def</span> choise_map_1_5():
+    reg.<span class="skw">wait</span>(<span class="str">"map1nextbtn-1.PNG"</span>,<span class="dig">5</span>)
+    click_random_position(reg, <span class="str">"map1nextbtn-1.PNG"</span>, -<span class="dig">50</span>, <span class="dig">50</span>, -<span class="dig">50</span>, <span class="dig">50</span>)
+    hover(Location(random.randint(<span class="dig">1504</span>-<span class="dig">30</span>, <span class="dig">1504</span>+<span class="dig">30</span>), random.randint(<span class="dig">552</span>-<span class="dig">30</span>, <span class="dig">552</span>+<span class="dig">30</span>)))
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">4</span>))
+    reg.<span class="skw">wait</span>(<span class="str">"map1-6.PNG"</span>,<span class="dig">5</span>)
+    click_random_position(reg, <span class="str">"map1-6.PNG"</span>, -<span class="dig">300</span>, <span class="dig">200</span>, -<span class="dig">70</span>, <span class="dig">30</span>)
+
+<span class="kw">def</span> choise_map_3_2():
+    reg.<span class="skw">wait</span>(<img src="1464355962594.png" />,<span class="dig">5</span>)
+    click_random_position(reg, <img src="1464355962594.png" />, -<span class="dig">25</span>, <span class="dig">25</span>, -<span class="dig">15</span>, <span class="dig">15</span>)
+    hover(Location(random.randint(<span class="dig">1504</span>-<span class="dig">30</span>, <span class="dig">1504</span>+<span class="dig">30</span>), random.randint(<span class="dig">552</span>-<span class="dig">30</span>, <span class="dig">552</span>+<span class="dig">30</span>)))
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">4</span>))
+    reg.<span class="skw">wait</span>(<img src="1464356033670.png" />,<span class="dig">5</span>)
+    click_random_position(reg, <img src="1464356033670.png" />, -<span class="dig">140</span>, <span class="dig">140</span>, -<span class="dig">50</span>, <span class="dig">50</span>)
 
 <span class="kw">def</span> edit_formation(formation = False):
     formation_click_position_x = random.randint(<span class="dig">1139</span>, <span class="dig">1330</span>)
@@ -148,7 +166,7 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
             <span class="kw">if</span> reg.exists(<span class="str">"compass.PNG"</span>):
                 <span class="skw">click</span>(Location(formation_click_position_x + random.randint(-<span class="dig">20</span>, <span class="dig">20</span>), formation_click_position_y + random.randint(-<span class="dig">20</span>, <span class="dig">20</span>)))
             <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        click_random_position(reg, <span class="str">"formation_btn_vertical.PNG"</span>, -<span class="dig">40</span>, <span class="dig">40</span>, <span class="dig">60</span>, <span class="dig">80</span>)
+        click_random_position(reg, <img src="1464287782221.png" />, -<span class="dig">40</span>, <span class="dig">40</span>, <span class="dig">60</span>, <span class="dig">80</span>)
     <span class="kw">elif</span> formation == <span class="str">"horzontal"</span>:
         <span class="kw">while</span> <span class="kw">not</span> reg.exists(<span class="str">"formation_step.PNG"</span>):
             <span class="kw">if</span> reg.exists(<span class="str">"compass.PNG"</span>):
@@ -171,11 +189,11 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
                 check_outline()
             <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
         reg.<span class="skw">wait</span>(<span class="str">"nextspotbtn.PNG"</span>,<span class="dig">5</span>)
-        click_random_position(reg, <span class="str">"nextspotbtn.PNG"</span>, -<span class="dig">40</span>, <span class="dig">40</span>, -<span class="dig">40</span>, <span class="dig">40</span>)
+        click_random_position(reg, <span class="str">"nextspotbtn.PNG"</span>, -<span class="dig">30</span>, <span class="dig">30</span>, -<span class="dig">30</span>, <span class="dig">30</span>)
     <span class="kw">else</span>:
         <span class="kw">while</span> <span class="kw">not</span> reg.exists(<img src="1462985138674-1.png" />):
             <span class="kw">if</span> reg.exists(<span class="str">"getoutspot.PNG"</span>):
-                click_random_position(reg, <span class="str">"getoutspot.PNG"</span>, -<span class="dig">40</span>, <span class="dig">40</span>, -<span class="dig">40</span>, <span class="dig">40</span>)
+                click_random_position(reg, <span class="str">"getoutspot.PNG"</span>, -<span class="dig">30</span>, <span class="dig">30</span>, -<span class="dig">30</span>, <span class="dig">30</span>)
             <span class="kw">else</span>:
                 <span class="skw">click</span>(Location(formation_click_position_x + random.randint(-<span class="dig">20</span>, <span class="dig">20</span>), formation_click_position_y + random.randint(-<span class="dig">20</span>, <span class="dig">20</span>)))
                 check_outline()
@@ -183,11 +201,37 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
         reg.<span class="skw">wait</span>(<img src="1462985138674-1.png" />,<span class="dig">5</span>)
         click_random_position(reg, <img src="1462985138674-1.png" />, -<span class="dig">40</span>, <span class="dig">40</span>, -<span class="dig">40</span>, <span class="dig">40</span>)
 
+<span class="kw">def</span> kira_1_1():
+    autosupply()
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+    go_to_fight_page()
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+    choise_map_1_1()
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">4</span>))
+    click_fight_btn()
+
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+    <span class="cmt"># 攻擊點 A</span>
+    edit_formation(<span class="str">"vertical"</span>)
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+    attack_spot()
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+
+    <span class="cmt"># 攻擊點 C</span>
+    edit_formation(<span class="str">"vertical"</span>)
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+    attack_spot(True)
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
 
 <span class="kw">def</span> automap1_5_3():
     autosupply()
     <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-    startmap1_5()
+    go_to_fight_page()
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+    choise_map_1_5()
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">4</span>))
+    click_fight_btn()
+
     <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
 
     <span class="cmt"># 攻擊點 A</span>
@@ -211,8 +255,11 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
 <span class="kw">def</span> automap1_5_1():
     autosupply()
     <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-    startmap1_5()
+    go_to_fight_page()
     <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+    choise_map_1_5()
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">4</span>))
+    click_fight_btn()
 
     <span class="cmt"># 攻擊點 A</span>
     edit_formation(<span class="str">"horzontal"</span>)
@@ -220,16 +267,35 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
     attack_spot(True)
     <span class="skw">sleep</span>(<span class="dig">2</span>)
 
+<span class="kw">def</span> automap3_2_1():
+    autosupply()
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+    go_to_fight_page()
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+    choise_map_3_2()
+    <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">4</span>))
+    click_fight_btn()
+
+    <span class="cmt"># 攻擊點 A</span>
+    edit_formation(<span class="str">"vertical"</span>)
+    <span class="skw">sleep</span>(<span class="dig">2</span>)
+    attack_spot(True)
+    <span class="skw">sleep</span>(<span class="dig">2</span>)
+
+
 <span class="kw">def</span> loop_auto_attack(attack_count):
     i = <span class="dig">0</span>
     <span class="kw">while</span> i &lt; attack_count :
         <span class="kw">try</span>:
-            automap1_5_3()
+            automap1_5_1()
+            <span class="cmt">#automap1_5_3()</span>
+            <span class="cmt">#automap3_2_1()</span>
+            <span class="cmt">#kira_1_1()</span>
             i = i + <span class="dig">1</span>
         <span class="kw">except</span>:
             restart_game()
 
-loop_auto_attack(<span class="dig">3</span>)
+loop_auto_attack(<span class="dig">10</span>)
 </pre>
 </body>
 </html>

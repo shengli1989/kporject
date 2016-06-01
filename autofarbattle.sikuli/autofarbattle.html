@@ -79,6 +79,7 @@ start_btn_area = Region(<span class="dig">1502</span>,<span class="dig">529</spa
 mission_complete_message_area = Region(<span class="dig">1430</span>,<span class="dig">180</span>,<span class="dig">445</span>,<span class="dig">91</span>)
 supply_area = Region(<span class="dig">1163</span>,<span class="dig">274</span>,<span class="dig">270</span>,<span class="dig">378</span>)
 
+
 notargetposition = Location(<span class="dig">1162</span>, <span class="dig">308</span>)
 game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</span>)
 
@@ -200,6 +201,10 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
         click_random_position(reg, <span class="str">"far_battle_btn_map2.PNG"</span>, -<span class="dig">20</span>, <span class="dig">20</span>, -<span class="dig">15</span>, <span class="dig">15</span>)
         <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">6</span>))
         click_random_position(reg, <span class="str">"mission_id_5.PNG"</span>, -<span class="dig">20</span>, <span class="dig">200</span>, -<span class="dig">10</span>, <span class="dig">10</span>)
+    <span class="kw">elif</span> mission_id == <span class="dig">21</span>:
+        click_random_position(reg, <span class="str">"far_battle_btn_map3-1.PNG"</span>, -<span class="dig">20</span>, <span class="dig">20</span>, -<span class="dig">15</span>, <span class="dig">15</span>)
+        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">6</span>))
+        click_random_position(reg, <img src="1464013288100.png" />, -<span class="dig">35</span>, <span class="dig">200</span>, -<span class="dig">10</span>, <span class="dig">10</span>)
     <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
 
     reg.<span class="skw">wait</span>(<span class="str">"far_battle_check_btn.PNG"</span>,<span class="dig">3</span>)
@@ -220,6 +225,18 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
     hover(Location(random.randint(<span class="dig">1656</span>, <span class="dig">1656</span> + <span class="dig">250</span>), random.randint(<span class="dig">241</span>, <span class="dig">241</span> + <span class="dig">150</span>)))
     <span class="skw">sleep</span>(random.randint(<span class="dig">5</span>,<span class="dig">10</span>))
 
+
+<span class="kw">def</span> check_mission_state():
+    Region(<span class="dig">1308</span>,<span class="dig">628</span>,<span class="dig">453</span>,<span class="dig">33</span>)
+    Region(<span class="dig">1596</span>,<span class="dig">209</span>,<span class="dig">83</span>,<span class="dig">41</span>)
+    Region(<span class="dig">1398</span>,<span class="dig">553</span>,<span class="dig">162</span>,<span class="dig">65</span>)
+    <img src="1464413019432.png" />
+    <img src="1464412908064.png" />
+    <img src="1464412937165.png" />
+    <img src="1464413057112.png" />
+    <img src="1464413158588.png" />
+    <img src="1464414311082.png" />
+
 <span class="kw">def</span> auto_far_battle(run_turn_min, run_total_count):
     i = <span class="dig">0</span>
     <span class="kw">while</span> i &lt; run_total_count :
@@ -239,10 +256,10 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
             <span class="kw">if</span> team2_state == <span class="str">"stop"</span> <span class="kw">or</span> team3_state == <span class="str">"stop"</span> <span class="kw">or</span> team4_state == <span class="str">"stop"</span>:
                 go_far_battle_page()
                 <span class="kw">if</span> team2_state == <span class="str">"stop"</span>:
-                    start_mission(<span class="dig">5</span>, <span class="dig">2</span>)
+                    start_mission(<span class="dig">2</span>, <span class="dig">2</span>)
                     team2_state = <span class="str">"active"</span>
                 <span class="kw">if</span> team3_state == <span class="str">"stop"</span>:
-                    start_mission(<span class="dig">2</span>, <span class="dig">3</span>)
+                    start_mission(<span class="dig">5</span>, <span class="dig">3</span>)
                     team3_state = <span class="str">"active"</span>
                 <span class="kw">if</span> team4_state == <span class="str">"stop"</span>:
                     start_mission(<span class="dig">3</span>, <span class="dig">4</span>)
@@ -251,11 +268,12 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
             <span class="kw">else</span>:
                 <span class="kw">pass</span>
             <span class="skw">sleep</span>(random.randint(run_turn_min, run_turn_min + <span class="dig">10</span>) * <span class="dig">60</span> )
+            <span class="kw">print</span> <span class="str">'tern'</span> + `i`
 
         <span class="kw">except</span>:
             restart_game()
 
-auto_far_battle(<span class="dig">30</span>, <span class="dig">16</span>)
+auto_far_battle(<span class="dig">30</span>, <span class="dig">18</span>)
 </pre>
 </body>
 </html>

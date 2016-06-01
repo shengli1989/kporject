@@ -7,6 +7,7 @@ start_btn_area = Region(1502,529,372,124)
 mission_complete_message_area = Region(1430,180,445,91)
 supply_area = Region(1163,274,270,378)
 
+
 notargetposition = Location(1162, 308)
 game_start_btn = Location(1672, 582)
 
@@ -128,6 +129,10 @@ def start_mission(mission_id, team_num = 2):
         click_random_position(reg, "far_battle_btn_map2.PNG", -20, 20, -15, 15)
         sleep(random.randint(2,6))
         click_random_position(reg, "mission_id_5.PNG", -20, 200, -10, 10)
+    elif mission_id == 21:
+        click_random_position(reg, "far_battle_btn_map3-1.PNG", -20, 20, -15, 15)
+        sleep(random.randint(2,6))
+        click_random_position(reg, "1464013288100.png", -35, 200, -10, 10)        
     sleep(random.randint(2,5))
         
     reg.wait("far_battle_check_btn.PNG",3)
@@ -148,6 +153,18 @@ def start_mission(mission_id, team_num = 2):
     hover(Location(random.randint(1656, 1656 + 250), random.randint(241, 241 + 150)))
     sleep(random.randint(5,10))
 
+
+def check_mission_state():
+    Region(1308,628,453,33)
+    Region(1596,209,83,41)
+    Region(1398,553,162,65)
+    "1464413019432.png"
+    "1464412908064.png"
+    "1464412937165.png"
+    "1464413057112.png"
+    "1464413158588.png"
+    "1464414311082.png"
+
 def auto_far_battle(run_turn_min, run_total_count):
     i = 0 
     while i < run_total_count :
@@ -167,10 +184,10 @@ def auto_far_battle(run_turn_min, run_total_count):
             if team2_state == "stop" or team3_state == "stop" or team4_state == "stop":
                 go_far_battle_page()
                 if team2_state == "stop":
-                    start_mission(5, 2)
+                    start_mission(2, 2)
                     team2_state = "active"
                 if team3_state == "stop":
-                    start_mission(2, 3)
+                    start_mission(5, 3)
                     team3_state = "active"
                 if team4_state == "stop":                
                     start_mission(3, 4)
@@ -179,8 +196,9 @@ def auto_far_battle(run_turn_min, run_total_count):
             else: 
                 pass
             sleep(random.randint(run_turn_min, run_turn_min + 10) * 60 )
+            print 'tern' + `i`
                             
         except:
             restart_game()
             
-auto_far_battle(30, 16)
+auto_far_battle(30, 18)
