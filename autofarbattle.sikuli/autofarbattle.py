@@ -85,6 +85,9 @@ def check_mission_complete_message():
         sleep(random.randint(2,5))
         if mission_complete_message_area.exists("1463317363839.png", 2):
             finish_mission_complete_message()
+            sleep(random.randint(2,5))
+            if mission_complete_message_area.exists("1463317363839.png", 2):
+                finish_mission_complete_message()
 
     else:
         current_page = check_current_page()
@@ -98,6 +101,10 @@ def check_mission_complete_message():
             sleep(random.randint(2,5))
             if mission_complete_message_area.exists("1463317363839.png", 2):
                 finish_mission_complete_message()
+                sleep(random.randint(2,5))
+                if mission_complete_message_area.exists("1463317363839.png", 2):
+                    finish_mission_complete_message()
+
 
 def check_mission_state_and_supply(team_num):
     if team_num == 2:        
@@ -107,7 +114,8 @@ def check_mission_state_and_supply(team_num):
         click_random_position(supply_area, "1463680035395.png", -8, 8, -8, 8)
         sleep(random.randint(1,3))
     elif team_num == 4:
-        pass
+        click_random_position(supply_area, "1464836591349.png", -8, 8, -8, 8)
+        sleep(random.randint(1,3))
     
     if supply_area.exists("far_battle_ing-1.PNG",2):
         team_state = "active"
@@ -120,11 +128,21 @@ def check_mission_state_and_supply(team_num):
 def start_mission(mission_id, team_num = 2):
            
     if mission_id == 2:        
+        click_random_position(reg, "1464837408557.png", -20, 20, -15, 15)
+        sleep(random.randint(2,6))        
         click_random_position(reg, "mission_id_2.PNG", -20, 200, -10, 10) 
     elif mission_id == 3:        
+        click_random_position(reg, "1464837408557.png", -20, 20, -15, 15)
+        sleep(random.randint(2,6))                
         click_random_position(reg, "mission_id_3.PNG", -20, 200, -10, 10) 
     elif mission_id == 5:               
+        click_random_position(reg, "1464837408557.png", -20, 20, -15, 15)
+        sleep(random.randint(2,6))                        
         click_random_position(reg, "mission_id_5.PNG", -20, 200, -10, 10) 
+    elif mission_id == 6:               
+        click_random_position(reg, "1464837408557.png", -20, 20, -15, 15)
+        sleep(random.randint(2,6))                        
+        click_random_position(reg, "1465437192910.png", -20, 200, -8, 10)     
     elif mission_id == 9:
         click_random_position(reg, "far_battle_btn_map2.PNG", -20, 20, -15, 15)
         sleep(random.randint(2,6))
@@ -145,8 +163,8 @@ def start_mission(mission_id, team_num = 2):
         sleep(random.randint(2,5))
         pass
     elif team_num == 4:
+        click_random_position(reg, "1464836680991.png", -8, 8, -8, 8)        
         sleep(random.randint(2,5))
-        pass   
     
     reg.wait("far_battle_start_btn.PNG",3)
     click_random_position(reg, "far_battle_start_btn.PNG", -65, 65, -15, 15)
@@ -178,7 +196,7 @@ def auto_far_battle(run_turn_min, run_total_count):
             team4_state = False
             team2_state = check_mission_state_and_supply(2)
             team3_state = check_mission_state_and_supply(3)
-            #team4_state = check_mission_state_and_supply(4)
+            team4_state = check_mission_state_and_supply(4)
             go_home_page()
             
             if team2_state == "stop" or team3_state == "stop" or team4_state == "stop":
@@ -190,7 +208,7 @@ def auto_far_battle(run_turn_min, run_total_count):
                     start_mission(5, 3)
                     team3_state = "active"
                 if team4_state == "stop":                
-                    start_mission(3, 4)
+                    start_mission(21, 4)
                     team4_state = "active"            
                 go_home_page()
             else: 
@@ -201,4 +219,4 @@ def auto_far_battle(run_turn_min, run_total_count):
         except:
             restart_game()
             
-auto_far_battle(30, 18)
+auto_far_battle(30, 21)

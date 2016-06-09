@@ -157,6 +157,9 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
         <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
         <span class="kw">if</span> mission_complete_message_area.exists(<img src="1463317363839.png" />, <span class="dig">2</span>):
             finish_mission_complete_message()
+            <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+            <span class="kw">if</span> mission_complete_message_area.exists(<img src="1463317363839.png" />, <span class="dig">2</span>):
+                finish_mission_complete_message()
 
     <span class="kw">else</span>:
         current_page = check_current_page()
@@ -170,6 +173,10 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
             <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
             <span class="kw">if</span> mission_complete_message_area.exists(<img src="1463317363839.png" />, <span class="dig">2</span>):
                 finish_mission_complete_message()
+                <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
+                <span class="kw">if</span> mission_complete_message_area.exists(<img src="1463317363839.png" />, <span class="dig">2</span>):
+                    finish_mission_complete_message()
+
 
 <span class="kw">def</span> check_mission_state_and_supply(team_num):
     <span class="kw">if</span> team_num == <span class="dig">2</span>:
@@ -179,7 +186,8 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
         click_random_position(supply_area, <img src="1463680035395.png" />, -<span class="dig">8</span>, <span class="dig">8</span>, -<span class="dig">8</span>, <span class="dig">8</span>)
         <span class="skw">sleep</span>(random.randint(<span class="dig">1</span>,<span class="dig">3</span>))
     <span class="kw">elif</span> team_num == <span class="dig">4</span>:
-        <span class="kw">pass</span>
+        click_random_position(supply_area, <img src="1464836591349.png" />, -<span class="dig">8</span>, <span class="dig">8</span>, -<span class="dig">8</span>, <span class="dig">8</span>)
+        <span class="skw">sleep</span>(random.randint(<span class="dig">1</span>,<span class="dig">3</span>))
 
     <span class="kw">if</span> supply_area.exists(<span class="str">"far_battle_ing-1.PNG"</span>,<span class="dig">2</span>):
         team_state = <span class="str">"active"</span>
@@ -192,11 +200,21 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
 <span class="kw">def</span> start_mission(mission_id, team_num = <span class="dig">2</span>):
 
     <span class="kw">if</span> mission_id == <span class="dig">2</span>:
+        click_random_position(reg, <img src="1464837408557.png" />, -<span class="dig">20</span>, <span class="dig">20</span>, -<span class="dig">15</span>, <span class="dig">15</span>)
+        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">6</span>))
         click_random_position(reg, <span class="str">"mission_id_2.PNG"</span>, -<span class="dig">20</span>, <span class="dig">200</span>, -<span class="dig">10</span>, <span class="dig">10</span>)
     <span class="kw">elif</span> mission_id == <span class="dig">3</span>:
+        click_random_position(reg, <img src="1464837408557.png" />, -<span class="dig">20</span>, <span class="dig">20</span>, -<span class="dig">15</span>, <span class="dig">15</span>)
+        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">6</span>))
         click_random_position(reg, <span class="str">"mission_id_3.PNG"</span>, -<span class="dig">20</span>, <span class="dig">200</span>, -<span class="dig">10</span>, <span class="dig">10</span>)
     <span class="kw">elif</span> mission_id == <span class="dig">5</span>:
+        click_random_position(reg, <img src="1464837408557.png" />, -<span class="dig">20</span>, <span class="dig">20</span>, -<span class="dig">15</span>, <span class="dig">15</span>)
+        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">6</span>))
         click_random_position(reg, <span class="str">"mission_id_5.PNG"</span>, -<span class="dig">20</span>, <span class="dig">200</span>, -<span class="dig">10</span>, <span class="dig">10</span>)
+    <span class="kw">elif</span> mission_id == <span class="dig">6</span>:
+        click_random_position(reg, <img src="1464837408557.png" />, -<span class="dig">20</span>, <span class="dig">20</span>, -<span class="dig">15</span>, <span class="dig">15</span>)
+        <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">6</span>))
+        click_random_position(reg, <img src="1465437192910.png" />, -<span class="dig">20</span>, <span class="dig">200</span>, -<span class="dig">8</span>, <span class="dig">10</span>)
     <span class="kw">elif</span> mission_id == <span class="dig">9</span>:
         click_random_position(reg, <span class="str">"far_battle_btn_map2.PNG"</span>, -<span class="dig">20</span>, <span class="dig">20</span>, -<span class="dig">15</span>, <span class="dig">15</span>)
         <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">6</span>))
@@ -217,8 +235,8 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
         <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
         <span class="kw">pass</span>
     <span class="kw">elif</span> team_num == <span class="dig">4</span>:
+        click_random_position(reg, <img src="1464836680991.png" />, -<span class="dig">8</span>, <span class="dig">8</span>, -<span class="dig">8</span>, <span class="dig">8</span>)
         <span class="skw">sleep</span>(random.randint(<span class="dig">2</span>,<span class="dig">5</span>))
-        <span class="kw">pass</span>
 
     reg.<span class="skw">wait</span>(<span class="str">"far_battle_start_btn.PNG"</span>,<span class="dig">3</span>)
     click_random_position(reg, <span class="str">"far_battle_start_btn.PNG"</span>, -<span class="dig">65</span>, <span class="dig">65</span>, -<span class="dig">15</span>, <span class="dig">15</span>)
@@ -250,7 +268,7 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
             team4_state = False
             team2_state = check_mission_state_and_supply(<span class="dig">2</span>)
             team3_state = check_mission_state_and_supply(<span class="dig">3</span>)
-            <span class="cmt">#team4_state = check_mission_state_and_supply(4)</span>
+            team4_state = check_mission_state_and_supply(<span class="dig">4</span>)
             go_home_page()
 
             <span class="kw">if</span> team2_state == <span class="str">"stop"</span> <span class="kw">or</span> team3_state == <span class="str">"stop"</span> <span class="kw">or</span> team4_state == <span class="str">"stop"</span>:
@@ -262,7 +280,7 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
                     start_mission(<span class="dig">5</span>, <span class="dig">3</span>)
                     team3_state = <span class="str">"active"</span>
                 <span class="kw">if</span> team4_state == <span class="str">"stop"</span>:
-                    start_mission(<span class="dig">3</span>, <span class="dig">4</span>)
+                    start_mission(<span class="dig">21</span>, <span class="dig">4</span>)
                     team4_state = <span class="str">"active"</span>
                 go_home_page()
             <span class="kw">else</span>:
@@ -273,7 +291,7 @@ game_start_btn = Location(<span class="dig">1672</span>, <span class="dig">582</
         <span class="kw">except</span>:
             restart_game()
 
-auto_far_battle(<span class="dig">30</span>, <span class="dig">18</span>)
+auto_far_battle(<span class="dig">30</span>, <span class="dig">21</span>)
 </pre>
 </body>
 </html>

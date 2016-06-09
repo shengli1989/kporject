@@ -293,7 +293,8 @@ horzontalbtnposition = Location(<span class="dig">1725</span>,<span class="dig">
             <span class="cmt">#kira_1_1()</span>
             i = i + <span class="dig">1</span>
         <span class="kw">except</span>:
-            restart_game()
+            <span class="skw">click</span>(Location(<span class="dig">1451</span> + random.randint(-<span class="dig">20</span>, <span class="dig">20</span>), <span class="dig">481</span> + random.randint(-<span class="dig">20</span>, <span class="dig">20</span>)))
+            <span class="cmt">#restart_game()</span>
 
 loop_auto_attack(<span class="dig">10</span>)
 </pre>

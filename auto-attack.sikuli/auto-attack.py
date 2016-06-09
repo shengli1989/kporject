@@ -221,6 +221,7 @@ def loop_auto_attack(attack_count):
             #kira_1_1()
             i = i + 1
         except:
-            restart_game()
+            click(Location(1451 + random.randint(-20, 20), 481 + random.randint(-20, 20)))
+            #restart_game()
 
 loop_auto_attack(10)
